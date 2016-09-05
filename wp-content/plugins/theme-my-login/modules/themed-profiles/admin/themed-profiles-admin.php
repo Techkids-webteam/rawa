@@ -70,7 +70,7 @@ class Theme_My_Login_Themed_Profiles_Admin extends Theme_My_Login_Abstract {
 	public function activate() {
 		if ( ! $page_id = Theme_My_Login::get_page_id( 'profile' ) ) {
 			$page_id = wp_insert_post( array(
-				'post_title'     => __( 'Your Profile', 'theme-my-login' ),
+				'post_title'     => __( '', 'theme-my-login' ),
 				'post_status'    => 'publish',
 				'post_type'      => 'page',
 				'post_content'   => '[theme-my-login]',

@@ -53,6 +53,11 @@ input:focus {
 	outline:0;
 }
 
+.required-marker:after{
+  content:"*";
+  color:red;
+}
+
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
