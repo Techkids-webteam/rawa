@@ -22,7 +22,7 @@
 	    });
     </script>
 		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/fonts/fonts.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/masonry.pkgd.min.js"></script>
@@ -34,21 +34,43 @@
 
 			<!-- header -->
 			<header class="header clear" role="banner">
+				<!-- nav -->
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				  <div class="container-fluid">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand" href="#">Brand</a>
+				    </div>
 
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo home_url(); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
-					</div>
-					<!-- /logo -->
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<?php html5blank_nav(); ?>
+				      <ul class="nav navbar-nav">
+				        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+				        <li><a href="#">Link</a></li>
+				        <li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><a href="#">Action</a></li>
+				            <li><a href="#">Another action</a></li>
+				            <li><a href="#">Something else here</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">Separated link</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">One more separated link</a></li>
+				          </ul>
+				        </li>
+				      </ul>
 
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
+					  </div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
 
+				</nav>
 			</header>
 			<!-- /header -->

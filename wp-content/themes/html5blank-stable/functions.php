@@ -70,7 +70,7 @@ function html5blank_nav()
 		'theme_location'  => 'header-menu',
 		'menu'            => '',
 		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container',
+		'container_class' => 'menu-{menu slug}-container dropdown-menu',
 		'container_id'    => '',
 		'menu_class'      => 'menu',
 		'menu_id'         => '',
