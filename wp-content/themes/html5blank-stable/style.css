@@ -26,8 +26,9 @@
 	text-rendering:optimizeLegibility;
 }
 /* html element 62.5% font-size for REM use */
-html {
+html, body {
 	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
+	color: #000000;
 }
 
 img {
@@ -60,6 +61,31 @@ input:focus {
 .header {
 
 }
+.navbar-brand{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.navbar-brand img{
+	height: 30px;
+	width: auto;
+}
+
+.home-page.navbar-default{
+	background: transparent;
+	border: 0 none;
+}
+.home-page .navbar-brand{
+	display: none;
+}
+
+.home-page.navbar-default .navbar-nav > li > a,
+.home-page.navbar-default .navbar-nav > .open > a,
+.home-page.navbar-default .navbar-nav > .open > a:focus,
+.home-page.navbar-default .navbar-nav > .open > a:hover{
+	color: #ffffff;
+	background: transparent;
+}
+
 /* logo */
 .logo {
 
