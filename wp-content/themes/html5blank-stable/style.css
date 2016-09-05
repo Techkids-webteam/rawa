@@ -146,6 +146,10 @@ input:focus {
 	position: relative;
 }
 
+.student-info a:hover{
+	color: #000000;
+}
+
 .student-info-container::before {
 	content: "";
 	width: 0;
@@ -186,6 +190,35 @@ input:focus {
 .btn-default.btn-rated:focus {
 	border-color: #c63b3b;
 	color: #ffffff;
+}
+
+.slick-dots{
+	text-align: center;
+	margin-top: 15px;
+}
+
+.slick-dots li{
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.slick-dots button{
+	display: block;
+	width: 8px;
+	height: 8px;
+	font-size: 0;
+	border-radius: 100%;
+	background-color: #fff;
+	opacity: 0.5;
+	outline: 0 none;
+	border: 0 none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.slick-dots .slick-active button,
+.slick-dots button:hover{
+	opacity: 1;
 }
 
 /* SV5TOT PAGE ENDS*/
