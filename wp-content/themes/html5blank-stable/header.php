@@ -35,7 +35,7 @@
 		<div class="wrapper">
 
 			<!-- header -->
-			<header class="header clear" role="banner">
+			<header class="header clear container" role="banner">
 				<!-- nav -->
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 				  <div class="container-fluid">
@@ -52,24 +52,26 @@
 
 				    <!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<?php html5blank_nav(); ?>
-				      <ul class="nav navbar-nav">
-				        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-				        <li><a href="#">Link</a></li>
-				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				          <ul class="dropdown-menu">
-				            <li><a href="#">Action</a></li>
-				            <li><a href="#">Another action</a></li>
-				            <li><a href="#">Something else here</a></li>
-				            <li role="separator" class="divider"></li>
-				            <li><a href="#">Separated link</a></li>
-				            <li role="separator" class="divider"></li>
-				            <li><a href="#">One more separated link</a></li>
-				          </ul>
-				        </li>
+							<?php //html5blank_nav(); ?>
+				      <ul class="nav navbar-nav navbar-right">
+								<?php wp_list_pages( array( 'title_li' => '' ) ); ?>
+								<?php if(is_user_logged_in()) : ?>
+									<li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="#">Action</a></li>
+					            <li><a href="#">Another action</a></li>
+					            <li><a href="#">Something else here</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Separated link</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">One more separated link</a></li>
+					          </ul>
+					        </li>
+								<?php else : ?>
+									<li><a href="#">Link</a></li>
+								<?php endif; ?>
 				      </ul>
-
 					  </div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 

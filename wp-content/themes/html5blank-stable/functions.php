@@ -68,11 +68,11 @@ function html5blank_nav()
 	wp_nav_menu(
 	array(
 		'theme_location'  => 'header-menu',
-		'menu'            => '',
-		'container'       => 'div',
-		'container_class' => 'menu-{menu slug}-container dropdown-menu',
+		'container'       => false,
+		'container_class' => '',
 		'container_id'    => '',
-		'menu_class'      => 'menu',
+    'menu'            => '',
+		'menu_class'      => 'nav navbar-nav',
 		'menu_id'         => '',
 		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
