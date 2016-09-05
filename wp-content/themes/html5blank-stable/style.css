@@ -58,6 +58,10 @@ input:focus {
   color:red;
 }
 
+texarea.form-control{
+	resize: vertical;
+}
+
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/

@@ -55,7 +55,7 @@ Theme My Login will always look in your theme's directory first, before using th
 		$show_password_fields = apply_filters( 'show_password_fields', true, $profileuser );
 		if ( $show_password_fields ) :
 		?>
-		<?php echo get_avatar( $profileuser->ID, 300); ?>
+		
 		<h3>Quản lý tài khoản</h3>
 		<table class="tml-form-table">
 		<tr id="password" class="user-pass1-wrap">
