@@ -16,7 +16,7 @@
         </div>
         <div class="col-sm-6 Home_page_Right">
           <div class="text-center Home_page_Right_detail">
-            <p>SINH VIÊN NĂM TÔT</p>
+            <p>SINH VIÊN NĂM TỐT</p>
             <button>XEM THÊM</button>
           </div>
         </div>
