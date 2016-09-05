@@ -62,31 +62,6 @@ if (function_exists('add_theme_support'))
 	Functions
 \*------------------------------------*/
 
-// HTML5 Blank navigation
-function html5blank_nav()
-{
-	wp_nav_menu(
-	array(
-		'theme_location'  => 'header-menu',
-		'container'       => false,
-		'container_class' => '',
-		'container_id'    => '',
-    'menu'            => '',
-		'menu_class'      => 'nav navbar-nav',
-		'menu_id'         => '',
-		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 0,
-		'walker'          => ''
-		)
-	);
-}
-
 // Load HTML5 Blank scripts (header.php)
 function html5blank_header_scripts()
 {
