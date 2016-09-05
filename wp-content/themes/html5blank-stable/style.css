@@ -361,7 +361,6 @@ texarea.form-control{
 	font-size: 0;
 	border-radius: 100%;
 	background-color: #333333;
-	opacity: 0.5;
 	outline: 0 none;
 	border: 0 none;
 	padding: 0;
@@ -370,7 +369,7 @@ texarea.form-control{
 
 .slick-dots .slick-active button,
 .slick-dots button:hover{
-	opacity: 1;
+	background: #ff9900;
 }
 
 /* SV5TOT PAGE ENDS*/

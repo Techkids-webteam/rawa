@@ -79,7 +79,7 @@
 	<div class="page-heading">
 		<h2>RANDOM LIST</h2>
 	</div>
-	<ul class="row student-list">
+	<ul class="row student-list" id="random-list">
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
@@ -258,28 +258,5 @@
 		</li>
 	</ul>	
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#top-list').slick({
-			
-			responsive: [
-			{
-		    	breakpoint: 768,
-		    	settings: {
-		    		slidesToShow: 1,
-		    		slidesToScroll: 1,
-					dots: true,
-					arrows: false,
-					infinite: true,
-					speed: 300,
-					appendDots: ".student-list-dots"
-		      	}
-		    }
-
-		  ]
-		});
-	})
-</script>
 
 <?php get_footer(); ?>
