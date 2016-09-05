@@ -26,64 +26,66 @@
 	text-rendering:optimizeLegibility;
 }
 /* html element 62.5% font-size for REM use */
-html {
-	font-size:62.5%;
-}
-body {
-	font:300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color:#444;
-}
-/* clear */
-.clear:before,
-.clear:after {
-    content:' ';
-    display:table;
+html, body {
+	font-family: 'Proxima Nova', Helvetica, Arial, sans-serif;
+	color: #000000;
 }
 
-.clear:after {
-    clear:both;
-}
-.clear {
-    *zoom:1;
-}
 img {
-	max-width:100%;
 	vertical-align:bottom;
 }
 a {
-	color:#444;
+	color: inherit;
 	text-decoration:none;
 }
 a:hover {
-	color:#444;
+
 }
 a:focus {
 	outline:0;
 }
+
 a:hover,
 a:active {
 	outline:0;
 }
 input:focus {
 	outline:0;
-	border:1px solid #04A4CC;
 }
 
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
 
-/* wrapper */
-.wrapper {
-	max-width:1280px;
-	width:95%;
-	margin:0 auto;
-	position:relative;
-}
 /* header */
 .header {
 
 }
+.navbar-brand{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.navbar-brand img{
+	height: 30px;
+	width: auto;
+}
+
+.home-page.navbar-default{
+	background: transparent;
+	border: 0 none;
+}
+.home-page .navbar-brand{
+	display: none;
+}
+
+.home-page.navbar-default .navbar-nav > li > a,
+.home-page.navbar-default .navbar-nav > .open > a,
+.home-page.navbar-default .navbar-nav > .open > a:focus,
+.home-page.navbar-default .navbar-nav > .open > a:hover{
+	color: #ffffff;
+	background: transparent;
+}
+
 /* logo */
 .logo {
 
@@ -108,6 +110,119 @@ input:focus {
     PAGES
 \*------------------------------------*/
 
+/* HOME PAGE */
+
+/* HOME PAGE ENDS */
+
+
+/* SV5TOT PAGE */
+
+.page-heading {
+	text-align: center;
+}
+
+.student-list{
+	padding: 0
+}
+
+.student-item {
+	list-style: none;
+	margin-bottom: 40px;
+}
+
+.student-item img {
+	width: 100%;
+}
+
+.student-item p {
+	margin-top: 5px;
+}
+
+.student-item-content {
+	border: 1px solid #333333;
+}
+
+.student-info-container {
+	position: relative;
+}
+
+.student-info a:hover{
+	color: #000000;
+}
+
+.student-info-container::before {
+	content: "";
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-bottom: 20px solid #ffffff;
+	position: absolute;
+	bottom: 100%;
+	left: 20%;
+}
+
+.student-info {
+	margin-top: 10px;
+}
+
+.student-info [class*="col-xs-"] {
+	padding: 0;
+}
+
+.student-info .col-xs-4 {
+	text-align: right;
+}
+
+.btn-rated {
+	margin-top: 5px;
+}
+
+.btn-default.btn-rated:hover {
+	background: none;
+}
+
+.btn-default.btn-rated:focus,
+.btn-default.btn-rated:active {
+	background: #c63b3b;
+	outline: 0 none;
+}
+
+.btn-default.btn-rated:focus {
+	border-color: #c63b3b;
+	color: #ffffff;
+}
+
+.slick-dots{
+	text-align: center;
+	margin-top: 15px;
+}
+
+.slick-dots li{
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.slick-dots button{
+	display: block;
+	width: 8px;
+	height: 8px;
+	font-size: 0;
+	border-radius: 100%;
+	background-color: #fff;
+	opacity: 0.5;
+	outline: 0 none;
+	border: 0 none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.slick-dots .slick-active button,
+.slick-dots button:hover{
+	opacity: 1;
+}
+
+/* SV5TOT PAGE ENDS*/
+
 
 
 /*------------------------------------*\
@@ -115,48 +230,10 @@ input:focus {
 \*------------------------------------*/
 
 
-
-/*------------------------------------*\
-	TYPOGRAPHY
-\*------------------------------------*/
-
-@font-face {
-	font-family:'Font-Name';
-	src:url('fonts/font-name.eot');
-	src:url('fonts/font-name.eot?#iefix') format('embedded-opentype'),
-		url('fonts/font-name.woff') format('woff'),
-		url('fonts/font-name.ttf') format('truetype'),
-		url('fonts/font-name.svg#font-name') format('svg');
-    font-weight:normal;
-    font-style:normal;
-}
-
 /*------------------------------------*\
     RESPONSIVE
 \*------------------------------------*/
 
-@media only screen and (min-width:320px) {
-
-}
-@media only screen and (min-width:480px) {
-
-}
-@media only screen and (min-width:768px) {
-
-}
-@media only screen and (min-width:1024px) {
-
-}
-@media only screen and (min-width:1140px) {
-
-}
-@media only screen and (min-width:1280px) {
-
-}
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),
-	   only screen and (min-resolution:144dpi) {
-
-}
 
 /*------------------------------------*\
     MISC
@@ -178,80 +255,8 @@ input:focus {
 	text-shadow:none;
 }
 
-/*------------------------------------*\
-    WORDPRESS CORE
-\*------------------------------------*/
 
-.alignnone {
-	margin:5px 20px 20px 0;
-}
-.aligncenter,
-div.aligncenter {
-	display:block;
-	margin:5px auto 5px auto;
-}
-.alignright {
-	float:right;
-	margin:5px 0 20px 20px;
-}
-.alignleft {
-	float:left;
-	margin:5px 20px 20px 0;
-}
-a img.alignright {
-	float:right;
-	margin:5px 0 20px 20px;
-}
-a img.alignnone {
-	margin:5px 20px 20px 0;
-}
-a img.alignleft {
-	float:left;
-	margin:5px 20px 20px 0;
-}
-a img.aligncenter {
-	display:block;
-	margin-left:auto;
-	margin-right:auto;
-}
-.wp-caption {
-	background:#FFF;
-	border:1px solid #F0F0F0;
-	max-width:96%;
-	padding:5px 3px 10px;
-	text-align:center;
-}
-.wp-caption.alignnone {
-	margin:5px 20px 20px 0;
-}
-.wp-caption.alignleft {
-	margin:5px 20px 20px 0;
-}
-.wp-caption.alignright {
-	margin:5px 0 20px 20px;
-}
-.wp-caption img {
-	border:0 none;
-	height:auto;
-	margin:0;
-	max-width:98.5%;
-	padding:0;
-	width:auto;
-}
-.wp-caption .wp-caption-text,
-.gallery-caption {
-	font-size:11px;
-	line-height:17px;
-	margin:0;
-	padding:0 4px 5px;
-}
-.sticky {
-
-}
-.bypostauthor {
-
-}
-
+<<<<<<< HEAD
 /*------------------------------------*\
     PRINT
 \*------------------------------------*/
@@ -365,3 +370,5 @@ a img.aligncenter {
 
 
 /*-----------------Home-page-the-end----------------*/
+=======
+>>>>>>> 0ebf6e6accc7dcc527ea5c26fdba70abe5c25e47

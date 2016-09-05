@@ -11,8 +11,18 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
-
+		<link href="<?php echo get_template_directory_uri(); ?>/normalize.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/libs/slick/slick/slick.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/fonts/fonts.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/slick/slick/slick.min.js"></script>
+		
 		<?php wp_head(); ?>
+
 		<script>
 	    // conditionizr.com
 	    // configure environment tests
@@ -21,34 +31,42 @@
 	        tests: {}
 	    });
     </script>
-		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/jquery.min.js"></script>
-		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/masonry.pkgd.min.js"></script>
+
 	</head>
 	<body <?php body_class(); ?>>
-
-		<!-- wrapper -->
 		<div class="wrapper">
-
-			<!-- header -->
 			<header class="header clear" role="banner">
+				<nav class="navbar navbar-default navbar-fixed-top <?php if(is_page('home')) echo 'home-page' ?>" role="navigation">
+				  <div class="container">
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
+								<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png">
+							</a>
+				    </div>
 
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo home_url(); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav navbar-right">
+								<?php wp_list_pages( array( 'title_li' => '' ) ); ?>
+								<?php if(is_user_logged_in()) : ?>
+									<li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo get_user_meta( get_current_user_id(), 'nickname', true); ?> <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="<?php echo get_site_url(); ?>/your-profile/">Hồ sơ</a></li>
+					            <li><a href="<?php echo wp_logout_url(); ?> ">Đăng xuất</a></li>
+					          </ul>
+					        </li>
+								<?php else : ?>
+									<li><a href="<?php echo get_site_url(); ?>/login">Đăng Nhập</a></li>
+								<?php endif; ?>
+				      </ul>
+					  </div>
 					</div>
-					<!-- /logo -->
-
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
-
+				</nav>
 			</header>
 			<!-- /header -->
