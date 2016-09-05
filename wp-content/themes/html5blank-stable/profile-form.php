@@ -55,15 +55,14 @@ Theme My Login will always look in your theme's directory first, before using th
 		$show_password_fields = apply_filters( 'show_password_fields', true, $profileuser );
 		if ( $show_password_fields ) :
 		?>
-
-		<?php echo wp_lostpassword_url( $redirect ); ?> 
+		<?php echo get_avatar( $profileuser->ID, 300); ?>
 		<h3>Quản lý tài khoản</h3>
 		<table class="tml-form-table">
 		<tr id="password" class="user-pass1-wrap">
-			<th><label for="pass1">Đổi mật khẩu</label></th>
+			<th><label for="pass1">Mật khẩu</label></th>
 			<td>
 				<input class="hidden" value=" " /><!-- #24364 workaround -->
-				<button type="button" class="button button-secondary wp-generate-pw hide-if-no-js">Sinh mật khẩu mới</button>
+				<button type="button" class="button button-secondary wp-generate-pw hide-if-no-js">Chọn mật khẩu mới</button>
 				<div class="wp-pwd hide-if-js">
 					<span class="password-input-wrapper">
 						<input type="password" name="pass1" id="pass1" class="regular-text" value="" autocomplete="off" data-pw="<?php echo esc_attr( wp_generate_password( 24 ) ); ?>" aria-describedby="pass-strength-result" />
@@ -71,27 +70,26 @@ Theme My Login will always look in your theme's directory first, before using th
 					<div style="display:none" id="pass-strength-result" aria-live="polite"></div>
 					<button type="button" class="button button-secondary wp-hide-pw hide-if-no-js" data-toggle="0" aria-label="<?php esc_attr_e( 'Hide password', 'theme-my-login' ); ?>">
 						<span class="dashicons dashicons-hidden"></span>
-						<span class="text"><?php _e( 'Hide', 'theme-my-login' ); ?></span>
+						<span class="text"><?php _e( 'Hide'); ?></span>
 					</button>
 					<button type="button" class="button button-secondary wp-cancel-pw hide-if-no-js" data-toggle="0" aria-label="<?php esc_attr_e( 'Cancel password change', 'theme-my-login' ); ?>">
-						<span class="text"><?php _e( 'Cancel', 'theme-my-login' ); ?></span>
+						<span class="text"><?php _e( 'Cancel'); ?></span>
 					</button>
 				</div>
 			</td>
 		</tr>
 		<tr class="user-pass2-wrap hide-if-js">
-			<th scope="row"><label for="pass2"><?php _e( 'Repeat New Password', 'theme-my-login' ); ?></label></th>
+			<th scope="row"><label for="pass2"><?php _e( 'Repeat New Password' ); ?></label></th>
 			<td>
 			<input name="pass2" type="password" id="pass2" class="regular-text" value="" autocomplete="off" />
-			<p class="description"><?php _e( 'Type your new password again.', 'theme-my-login' ); ?></p>
+			<p class="description"><?php _e( 'Type your new password again.' ); ?></p>
 			</td>
 		</tr>
 		<tr class="pw-weak">
-			<th><?php _e( 'Confirm Password', 'theme-my-login' ); ?></th>
 			<td>
 				<label>
 					<input type="checkbox" name="pw_weak" class="pw-checkbox" />
-					<?php _e( 'Confirm use of weak password', 'theme-my-login' ); ?>
+					<?php _e( 'Confirm use of weak password'); ?>
 				</label>
 			</td>
 		</tr>
