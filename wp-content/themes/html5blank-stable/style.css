@@ -127,7 +127,6 @@ input:focus {
 
 .student-item {
 	list-style: none;
-	margin-bottom: 40px;
 }
 
 .student-item img {
@@ -195,6 +194,7 @@ input:focus {
 .slick-dots{
 	text-align: center;
 	margin-top: 15px;
+	padding: 0;
 }
 
 .slick-dots li{
@@ -204,11 +204,11 @@ input:focus {
 
 .slick-dots button{
 	display: block;
-	width: 8px;
-	height: 8px;
+	width: 20px;
+	height: 20px;
 	font-size: 0;
 	border-radius: 100%;
-	background-color: #fff;
+	background-color: #333333;
 	opacity: 0.5;
 	outline: 0 none;
 	border: 0 none;

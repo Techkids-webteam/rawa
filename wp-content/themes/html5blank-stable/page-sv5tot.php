@@ -4,7 +4,7 @@
 	<div class="page-heading">
 		<h2>TOP RATED</h2>
 	</div>
-	<ul class="row student-list">
+	<ul class="row student-list" id="top-list">
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
@@ -261,9 +261,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.student-list').slick({
-		  responsive: [
-		    {
+		$('#top-list').slick({
+			
+			responsive: [
+			{
 		    	breakpoint: 768,
 		    	settings: {
 		    		slidesToShow: 1,
