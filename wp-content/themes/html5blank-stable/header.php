@@ -11,8 +11,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
+		<link href="<?php echo get_template_directory_uri(); ?>/normalize.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo get_template_directory_uri(); ?>/fonts/fonts.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/masonry.pkgd.min.js"></script>
@@ -31,9 +33,9 @@
 	</head>
 	<body <?php body_class(); ?>>
 		<div class="wrapper">
-			<header class="header clear container" role="banner">
+			<header class="header clear" role="banner">
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-				  <div class="container-fluid">
+				  <div class="container">
 				    <div class="navbar-header">
 				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				        <span class="sr-only">Toggle navigation</span>
@@ -41,7 +43,9 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="<?php echo get_site_url(); ?>">Brand</a>
+				      <a class="navbar-brand" href="<?php echo get_site_url(); ?>">
+								<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png">
+							</a>
 				    </div>
 
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
