@@ -281,6 +281,10 @@ texarea.form-control{
 	list-style: none;
 }
 
+#random-list .student-item {
+	margin-bottom: 20px;
+}
+
 .student-item img {
 	width: 100%;
 }

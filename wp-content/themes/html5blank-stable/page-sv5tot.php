@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="container top-list-container" style="margin-top: 70px">
+<div class="container top-list-container">
 	<div class="page-heading">
 		<h2>TOP RATED</h2>
 	</div>
@@ -106,7 +106,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -128,7 +128,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_3.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -150,7 +150,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_4.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -172,7 +172,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_5.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -194,7 +194,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_6.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -216,7 +216,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_7.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
