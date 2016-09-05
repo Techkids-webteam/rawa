@@ -33,7 +33,7 @@
     </script>
 
 	</head>
-	<body <?php body_class(); ?>>
+	<body <?php body_class(); if(!is_page('home')) echo 'style="padding-top: 70px;"';?>>
 		<div class="wrapper">
 			<header class="header clear" role="banner">
 				<nav class="navbar navbar-default navbar-fixed-top <?php if(is_page('home')) echo 'home-page' ?>" role="navigation">

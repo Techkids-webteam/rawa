@@ -78,16 +78,16 @@ function user_avatar_core_set_avatar_constants() {
 		define( 'USER_AVATAR_URL', user_avatar_core_avatar_url() );
 
 	if ( !defined( 'USER_AVATAR_THUMB_WIDTH' ) )
-		define( 'USER_AVATAR_THUMB_WIDTH', 50 );
+		define( 'USER_AVATAR_THUMB_WIDTH', 96 );
 
 	if ( !defined( 'USER_AVATAR_THUMB_HEIGHT' ) )
-		define( 'USER_AVATAR_THUMB_HEIGHT', 50 );
+		define( 'USER_AVATAR_THUMB_HEIGHT', 96 );
 
 	if ( !defined( 'USER_AVATAR_FULL_WIDTH' ) )
-		define( 'USER_AVATAR_FULL_WIDTH', 150 );
+		define( 'USER_AVATAR_FULL_WIDTH', 650 );
 
 	if ( !defined( 'USER_AVATAR_FULL_HEIGHT' ) )
-		define( 'USER_AVATAR_FULL_HEIGHT', 150 );
+		define( 'USER_AVATAR_FULL_HEIGHT', 650 );
 
 	if ( !defined( 'USER_AVATAR_ORIGINAL_MAX_FILESIZE' ) ) {
 		if ( !get_site_option( 'fileupload_maxk', 1500 ) )
