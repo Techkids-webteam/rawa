@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'sv5t');
+define('DB_NAME', 'rawa');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -46,15 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '%l#~ySFCtC_4fF&SXTZI`?*l/bl<j,af_q5 (N#/oL`CoFR^Tf%1WgC0S^I^D<yw');
-define('SECURE_AUTH_KEY',  'E}.+L(%n9_grID?HV^4!=hN;dY32djo`ncyv{-;%t.4pIr)dWWKaUr!W:Vm*0Zzf');
-define('LOGGED_IN_KEY',    ')4U)ND_&2C>k^FSsEwOES2`MN0yDgC>[IiD>nz9|($TQ_E9(]QR:<J7VBdGAZh7h');
-define('NONCE_KEY',        'OLzfg{%1w-Qdd}isbn;CfJ-~RE0SVvF+20`eEyWmIu&i/d7zvMpVXB/W8Wb;~.+s');
-define('AUTH_SALT',        'g}jAw7MB(r,G/?a=6.eA]%3-5,?vt6<[+[1hpc]7M/^MxMwH^EPHwDP<SQu>jRYA');
-define('SECURE_AUTH_SALT', 'i%@Nu1RLtT]dg=soe0X[aTbh29Ohpsh?a=dH+Lh[G!3KyM,wh{u;^qh0X=6E%(fP');
-define('LOGGED_IN_SALT',   '=CHI12gqaDI] `}rj%,%A^]Lw.UMy}=#PqUt<&~&<ZmrCozXZ);J|-5Fx1jCO$X:');
-define('NONCE_SALT',       '[@- sS~M%hDc}b]!:s#zYx( Oys39$hm7&gzZs`V``?$@zaNSh:?-DIuTCT_P]q4');
-
+define('AUTH_KEY',         '%;qdHY@2^x(p}3O$?kHd#Kv6^/E$GV9f*Br2x1MTYEQAZAq?3?UR^fYT~fg[sdY4');
+define('SECURE_AUTH_KEY',  '>m7/T$J0CY%|VtFr<K?j=MS=Ce]4CK(>Z%< M(s51Z^~L{=l_tzYLH=:Pi!`~R9D');
+define('LOGGED_IN_KEY',    '^kS?zgZ{X[T=,cdk0=ZEEgnWM~!;ObXY~enP:Lvo4tkk;G.wJoc77Ut|6w1(m)>3');
+define('NONCE_KEY',        'ZPwp+^? FmSiRw/6`_JCUM0.G7>jfFUp=DME:,TXP~)P!@3_}PGK1KQgdsQ,!m55');
+define('AUTH_SALT',        'TCx+&22%x)6{<WRkOaJV}.A-l@^T/%Aoc~`JWt9UB6LDPA>fX0Og8vN#tT.l.HnD');
+define('SECURE_AUTH_SALT', 'sxqtg{/z,w~!v`adIk6 4O_P`ecC<?b(5q?lwZ]X}a|b;[mrM}lEYr5[nVnH@n|J');
+define('LOGGED_IN_SALT',   ']?a>m/D_p;H-:ov5Om/U^.{L%Luzhw644Y)D+QDvAPF wnI,.vJHQjqeMiiO~+B4');
+define('NONCE_SALT',       '2J:u=-Y9.W:* XZaA{A(e6(nnfCi~:hCkP4y9ZFjS{6(cgXdVK(<ecWi%sOp0!?p');
 
 /**#@-*/
 
