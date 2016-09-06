@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+	$('body').on('click', '.btn-rated', function(e){
+		e.preventDefault();
+		$(this).toggleClass('active')
+	})
+
 	$('#top-list').slick({
 		dots: false,
 		infinite: false,
@@ -20,17 +26,6 @@ $(document).ready(function() {
 	    }
 	  ]
 	});
-
-	// var $grid = $('#random-list').masonry({
-	// 	itemSelector: '.student-item',
-	// 	columnWidth: '.student-item',
-	// 	percentPosition: true
-	// });
-
-	// $grid.imagesLoaded().progress( function() {
- //  		$grid.masonry('layout');
- //  		console.log("aaa")
-	// });
 
 	var $grid = $('#random-list').imagesLoaded( function() {
 	  // init Masonry after all images have loaded

@@ -374,14 +374,36 @@ texarea.form-control{
 
 .btn-default.btn-rated:focus,
 .btn-default.btn-rated:active {
-	background: #c63b3b;
+	background: #ffffff;
 	outline: 0 none;
+	box-shadow: none;
 }
 
-.btn-default.btn-rated:focus {
+.btn.btn-rated.active {
 	border-color: #c63b3b;
 	color: #ffffff;
+	background: #c63b3b;
+	box-shadow: none;
 }
+
+.btn.btn-rated.active:hover {
+	border-color: #c63b3b;
+	color: #ffffff;
+	background: #c63b3b;
+	box-shadow: none;
+}
+
+.btn.btn-rated.active:focus {
+	border-color: #c63b3b;
+	color: #ffffff;
+	background: #c63b3b;
+	box-shadow: none;
+}
+
+/*.btn-default.btn-rated:focus {
+	border-color: #c63b3b;
+	color: #ffffff;
+}*/
 
 .slick-dots{
 	text-align: center;
