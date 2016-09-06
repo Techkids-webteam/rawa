@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="logo_rawa">
-            <img src="<?php echo get_template_directory_uri();?>./img/LogoRawa.png">
+            <img src="<?php echo get_template_directory_uri();?>/img/LogoRawa.png">
           </div>
         </div>
         <div class="col-sm-6 Home_page_Right">
