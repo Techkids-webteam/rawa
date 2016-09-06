@@ -4,9 +4,10 @@
 <div class="modal fade bs-example-modal-lg" id="modal-student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modal-student">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <div class="row">
       	<div class="col-sm-6 modal-student-img">
-      		<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_4.jpg">
+      		<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_3.jpg">
       	</div>
       	<div class="col-sm-6 modal-student-description">
 			<div class="student-info clearfix">
