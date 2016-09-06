@@ -153,22 +153,19 @@ texarea.form-control{
 		margin-top: 12%;
 	}
 	.home_page_left_detail a {
-	    font-size: 16px;
-	    background-color: rgba(255, 255, 255, 0.1);
-	    color: #ffffff;
-	    outline: 0 none;
-	    position: absolute;
-	    top: 80%;
-	    left: 50%;
-	    transform: translate(-50%,-50%);
-	    border: 1px solid #ffffff;
-	    font-family: 'Proxima Nova';
-	    font-weight: 300;
-	    width: 145px;
-	    line-height: 30px;
-			text-decoration: none;
-			cursor: pointer;
-	}
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: 0 none;
+    position: relative;
+    transform: translate(-50%,-50%);
+    border: 1px solid #ffffff;
+    font-family: 'Proxima Nova';
+    font-weight: 300;
+    padding: 2% 6%;
+    text-decoration: none;
+    cursor: pointer;
+}
 	.home_page_left_detail a:hover{
 		background-color: rgba(255, 255, 255, 0.3);
 	}
