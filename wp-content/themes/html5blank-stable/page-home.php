@@ -7,7 +7,7 @@
             <div class="Home_page_left_detail">
               <p>TUẦN NÀY</p>
               <p>TÀI CHÍNH CÓ GÌ?</p>
-              <button>XEM THÊM</button>
+              <a >XEM THÊM</a>
             </div>
           </div>
           <div class="logo_rawa">
@@ -17,7 +17,7 @@
         <div class="col-sm-6 Home_page_Right">
           <div class="text-center Home_page_Right_detail">
             <p>SINH VIÊN NĂM TỐT</p>
-            <button>XEM THÊM</button>
+            <a href="<?php echo get_site_url(); ?>/sv5tot/">XEM THÊM</a>
           </div>
         </div>
       </div>
