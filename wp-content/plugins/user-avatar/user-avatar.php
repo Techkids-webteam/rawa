@@ -656,7 +656,7 @@ function user_avatar_form($profile)
 	<div id="user-avatar-display" class="submitbox" >
 		<h3>Avatar</h3>
 		<p id="user-avatar-display-image"><?php echo user_avatar_get_avatar($profile->ID, 150); ?></p>
-		<a id="user-avatar-link" target="_blank" onclick="window.open(this.href, 'Snopzer', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="button-primary thickbox" href="<?php echo admin_url('admin-ajax.php'); ?>?action=user_avatar_add_photo&step=1&uid=<?php echo $profile->ID; ?>&TB_iframe=true&width=720&height=450" title="<?php _e('Upload and Crop an Image to be Displayed','user-avatar'); ?>" ><?php _e('Update Picture','user-avatar'); ?></a>
+		<a id="user-avatar-link" class="btn btn-default" target="_blank" onclick="window.open(this.href, 'Snopzer', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="button-primary thickbox" href="<?php echo admin_url('admin-ajax.php'); ?>?action=user_avatar_add_photo&step=1&uid=<?php echo $profile->ID; ?>&TB_iframe=true&width=720&height=450" title="<?php _e('Upload and Crop an Image to be Displayed','user-avatar'); ?>" >Đổi avatar</a>
 	</div>
 	<script type="text/javascript">
 	window.user_avatar_refresh_image = function(img){

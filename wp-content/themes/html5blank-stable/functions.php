@@ -439,7 +439,8 @@ function rawa_update_profile($user_id, $old_user_data) {
 }
 
 function approve_user_description($user_id){
-  if(in_array( 'manager', (array) $user->roles )){
+  $current_user = wp_get_current_user();
+  if(in_array( 'manager', (array) $current_user->roles )){
     update_user_meta($user_id, 'description', get_user_meta($user_id, 'self_description', true));
   }
 }

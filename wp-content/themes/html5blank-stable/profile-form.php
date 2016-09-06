@@ -39,19 +39,27 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="form-group">
-			<label for="self_description">Thành tích</label>
-			<textarea class="form-control" name="self_description" id="self_description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'self_description', true) ); ?></textarea>
-			<?php if(get_user_meta($profileuser->ID, 'self_description', true) != get_user_meta($profileuser->ID, 'description', true)) : ?>
-				<p class="help-block">Thành tích của bạn đang chờ xét duyệt.</p>
-			<?php endif; ?>
-		</div>
+		<?php //if(in_array( 'subscriber', (array) $current_user->roles )) : ?>
+			<div class="form-group">
+				<label for="self_description">Thành tích</label>
+				<textarea class="form-control" name="self_description" id="self_description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'self_description', true) ); ?></textarea>
+				<?php if(get_user_meta($profileuser->ID, 'self_description', true) != get_user_meta($profileuser->ID, 'description', true)) : ?>
+					<p class="bg-warning"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Thành tích của bạn đang trong quá trình chờ xét duyệt.</p>
+				<?php endif; ?>
+			</div>
+		<?php //endif; ?>
 
 		<?php
 		$show_password_fields = apply_filters( 'show_password_fields', true, $profileuser );
 		if ( $show_password_fields ) :
 		?>
+
+		<p class="tml-submit-wrap">
+			<input type="hidden" name="action" value="profile" />
+			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
+			<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $current_user->ID ); ?>" />
+			<input type="submit" class="btn btn-primary" value="Cập nhật hồ sơ" name="submit" id="submit" />
+		</p>
 
 		<h3>Quản lý tài khoản</h3>
 		<table class="tml-form-table">
@@ -59,7 +67,7 @@
 			<th><label for="pass1">Mật khẩu</label></th>
 			<td>
 				<input class="hidden" value=" " /><!-- #24364 workaround -->
-				<button type="button" class="button button-secondary wp-generate-pw hide-if-no-js">Chọn mật khẩu mới</button>
+				<button type="button" class="btn btn-default wp-generate-pw hide-if-no-js">Chọn mật khẩu mới</button>
 				<div class="wp-pwd hide-if-js">
 					<span class="password-input-wrapper">
 						<input type="password" name="pass1" id="pass1" class="regular-text" value="" autocomplete="off" data-pw="<?php echo esc_attr( wp_generate_password( 24 ) ); ?>" aria-describedby="pass-strength-result" />
@@ -95,12 +103,6 @@
 		</table>
 
 		<?php do_action( 'show_user_profile', $profileuser ); ?>
-
-		<p class="tml-submit-wrap">
-			<input type="hidden" name="action" value="profile" />
-			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
-			<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $current_user->ID ); ?>" />
-			<input type="submit" class="btn btn-primary" value="Cập nhật hồ sơ" name="submit" id="submit" />
-		</p>
 	</form>
+	<p></p>
 </div>
