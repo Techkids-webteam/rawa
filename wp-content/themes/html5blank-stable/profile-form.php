@@ -39,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<?php //if(in_array( 'subscriber', (array) $current_user->roles )) : ?>
+		<?php if(in_array( 'subscriber', (array) $current_user->roles )) : ?>
 			<div class="form-group">
 				<label for="self_description">Thành tích</label>
 				<textarea class="form-control" name="self_description" id="self_description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'self_description', true) ); ?></textarea>
@@ -47,7 +47,7 @@
 					<p class="bg-warning"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Thành tích của bạn đang trong quá trình chờ xét duyệt.</p>
 				<?php endif; ?>
 			</div>
-		<?php //endif; ?>
+		<?php endif; ?>
 
 		<?php
 		$show_password_fields = apply_filters( 'show_password_fields', true, $profileuser );
