@@ -452,8 +452,8 @@ texarea.form-control{
 	content: "";
 	width: 0;
 	height: 0;
-	border: 15px solid transparent;
-	border-bottom: 20px solid #ffffff;
+	border: 20px solid transparent;
+	border-bottom: 30px solid #ffffff;
 	position: absolute;
 	bottom: 100%;
 	left: 20%;
@@ -474,6 +474,10 @@ texarea.form-control{
 	}
 
 	.modal-student-description::before {
+		display: none;
+	}
+
+	.modal-student-img::after{
 		content: "";
 		width: 0;
 		height: 0;
@@ -481,8 +485,10 @@ texarea.form-control{
 		border-right: 20px solid #ffffff;
 		position: absolute;
 		top: 50%;
-		left: -7%;
+		right: 0;
+		transform: translate(0, -50%);
 	}
+
 
 }
 /* SV5TOT PAGE ENDS*/

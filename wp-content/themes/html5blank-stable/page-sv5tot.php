@@ -7,7 +7,7 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <div class="row">
       	<div class="col-sm-6 modal-student-img">
-      		<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_3.jpg">
+      		<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
       	</div>
       	<div class="col-sm-6 modal-student-description">
 			<div class="student-info clearfix">
