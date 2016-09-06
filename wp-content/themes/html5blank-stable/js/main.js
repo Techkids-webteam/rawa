@@ -20,9 +20,16 @@ $(document).ready(function() {
 	    }
 	  ]
 	});
-	$('#random-list').masonry({
+
+	var $grid = $('#random-list').masonry({
 		itemSelector: '.student-item',
 		columnWidth: '.student-item',
 		percentPosition: true
 	});
+
+	$grid.imagesLoaded().progress( function() {
+  		$grid.masonry('layout');
+  		console.log("aaa")
+	});
+
 })

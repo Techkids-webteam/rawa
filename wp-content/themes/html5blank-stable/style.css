@@ -414,6 +414,15 @@ texarea.form-control{
 }
 
 @media (min-width: 992px) {
+
+	.modal-student-description {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    overflow: auto;
+	}
+	
 	.modal-student-description::before {
 		content: "";
 		width: 0;
@@ -421,9 +430,11 @@ texarea.form-control{
 		border: 15px solid transparent;
 		border-right: 20px solid #ffffff;
 		position: absolute;
-		top: 100%;
+		top: 50%;
 		left: -7%;
 	}
+
+
 }
 /* SV5TOT PAGE ENDS*/
 
