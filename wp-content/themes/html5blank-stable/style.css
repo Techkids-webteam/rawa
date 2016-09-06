@@ -279,6 +279,7 @@ texarea.form-control{
 
 .student-item {
 	list-style: none;
+	outline: 0 none;
 }
 
 #random-list .student-item {
@@ -303,6 +304,10 @@ texarea.form-control{
 
 .student-info a:hover{
 	color: #000000;
+}
+
+.student-info .col-xs-12{
+	margin-top: 5px;
 }
 
 .student-info-container::before {
@@ -376,6 +381,50 @@ texarea.form-control{
 	background: #ff9900;
 }
 
+.modal-student {
+	border-radius: 0;
+}
+
+.modal-student .row {
+	margin: 0;
+}
+
+.modal-student .modal-student-img {
+	padding: 0
+}
+
+.modal-student-img img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+.modal-student-description {
+	position: relative;
+}
+
+.modal-student-description::before {
+	content: "";
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-bottom: 20px solid #ffffff;
+	position: absolute;
+	bottom: 100%;
+	left: 20%;
+}
+
+@media (min-width: 992px) {
+	.modal-student-description::before {
+		content: "";
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+		border-right: 20px solid #ffffff;
+		position: absolute;
+		top: 100%;
+		left: -7%;
+	}
+}
 /* SV5TOT PAGE ENDS*/
 
 
