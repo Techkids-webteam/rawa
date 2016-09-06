@@ -90,7 +90,7 @@ function html5blank_conditional_scripts()
 // Load HTML5 Blank styles
 function html5blank_styles()
 {
-    
+
 }
 
 // Register HTML5 Blank Navigation
@@ -420,4 +420,44 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
+
+/*---------------------------*\
+  RAWA Features
+\*----------------------------*/
+add_action( 'user_register', 'rawa_user_register' );
+function rawa_user_register( $user_id ) {
+  update_user_meta( $user_id, 'like', 0);
+  update_user_meta( $user_id, 'self_description', '');
+}
+
+add_action( 'personal_options_update', 'rawa_update_profile' );
+add_action( 'edit_user_profile_update', 'rawa_update_profile' );
+function rawa_update_profile($user_id, $old_user_data) {
+  if ( current_user_can('edit_user', $user_id) && ( isset( $_POST['self_description'] ) )){
+    update_user_meta($user_id, 'self_description', trim($_POST['self_description']));
+  }
+}
+
+function approve_user_description($user_id){
+  if(in_array( 'manager', (array) $user->roles )){
+    update_user_meta($user_id, 'description', get_user_meta($user_id, 'self_description', true));
+  }
+}
+
+function upvote_user($user_id){
+  if(in_array( 'subscriber', (array) $user->roles )){}
+}
+
+add_role( 'manager', __(
+  'Đội Quản Lý' ),
+  array(
+  'read' => true, // true allows this capability
+  'edit_posts' => false, // Allows user to edit their own posts
+  'edit_pages' => false, // Allows user to edit pages
+  'edit_others_posts' => false, // Allows user to edit others posts not just their own
+  'create_posts' => false, // Allows user to create new posts
+  'manage_categories' => false, // Allows user to manage post categories
+  'publish_posts' => false, // Allows the user to publish, otherwise posts stays in draft mode
+  )
+);
 ?>

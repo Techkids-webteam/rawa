@@ -1,9 +1,3 @@
-<?php
-/*
-If you would like to edit this file, copy it to your current theme's directory and edit it there.
-Theme My Login will always look in your theme's directory first, before using this default template.
-*/
-?>
 <div class="tml tml-profile" id="theme-my-login<?php $template->the_instance(); ?>">
 	<?php $template->the_action_template_message( 'profile' ); ?>
 	<?php $template->the_errors(); ?>
@@ -47,15 +41,18 @@ Theme My Login will always look in your theme's directory first, before using th
 		</div>
 
 		<div class="form-group">
-			<label for="description">Thành tích</label>
-			<textarea class="form-control" name="description" id="description" rows="5" cols="30"><?php echo esc_html( $profileuser->description ); ?></textarea>
+			<label for="self_description">Thành tích</label>
+			<textarea class="form-control" name="self_description" id="self_description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'self_description', true) ); ?></textarea>
+			<?php if(get_user_meta($profileuser->ID, 'self_description', true) != get_user_meta($profileuser->ID, 'description', true)) : ?>
+				<p class="help-block">Thành tích của bạn đang chờ xét duyệt.</p>
+			<?php endif; ?>
 		</div>
 
 		<?php
 		$show_password_fields = apply_filters( 'show_password_fields', true, $profileuser );
 		if ( $show_password_fields ) :
 		?>
-		
+
 		<h3>Quản lý tài khoản</h3>
 		<table class="tml-form-table">
 		<tr id="password" class="user-pass1-wrap">
@@ -98,7 +95,7 @@ Theme My Login will always look in your theme's directory first, before using th
 		</table>
 
 		<?php do_action( 'show_user_profile', $profileuser ); ?>
-		
+
 		<p class="tml-submit-wrap">
 			<input type="hidden" name="action" value="profile" />
 			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
