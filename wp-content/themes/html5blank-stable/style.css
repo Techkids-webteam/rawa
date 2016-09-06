@@ -121,21 +121,19 @@ texarea.form-control{
 
 /* HOME PAGE */
 /*--------------------Home-page----------------*/
-	.Home_page_left{
+	.home_page_left{
 		background-image: url(img/ANH.png);
 		background-size: cover;
 		background-repeat: no-repeat;
 		height: 50vh;
 		position: relative;
 	}
-	.Home_page_Right{
+	.home_page_Right{
 		height: 50vh;
 		background-color: #ff9900;
 	}
-	.Home_page_left_border{
-		padding: 0 50px;
-	}
-	.Home_page_left_detail {
+
+	.home_page_left_detail {
     border: 1px solid #ffffff;
     position: absolute;
     top: 50%;
@@ -144,17 +142,17 @@ texarea.form-control{
 		width: 50%;
     height: 160px;
 	}
-	.Home_page_left_detail p{
+	.home_page_left_detail p{
 		font-size: 18px;
 		font-family: 'Proxima Nova';
 		font-weight: 600;
 		color: #ffffff;
 
 	}
-	.Home_page_left_detail p:first-child{
+	.home_page_left_detail p:first-child{
 		margin-top: 12%;
 	}
-	.Home_page_left_detail a {
+	.home_page_left_detail a {
 	    font-size: 16px;
 	    background-color: rgba(255, 255, 255, 0.1);
 	    color: #ffffff;
@@ -171,7 +169,7 @@ texarea.form-control{
 			text-decoration: none;
 			cursor: pointer;
 	}
-	.Home_page_left_detail a:hover{
+	.home_page_left_detail a:hover{
 		background-color: rgba(255, 255, 255, 0.3);
 	}
 
@@ -185,24 +183,24 @@ texarea.form-control{
 		left: 42%;
   	cursor: pointer;
 	}
-	.Home_page_Right_detail {
+	.home_page_Right_detail {
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%,-50%);
-}
-	.Home_page_Right_border{
+	}
+	.home_page_Right_border{
 		border: 1px solid #ff9900;
 
 	}
-	.Home_page_Right_detail p{
+	.home_page_Right_detail p{
 		color: #ffffff;
 		font-family: 'Proxima Nova';
 		font-weight: 600;
 		font-size: 18px;
     white-space: nowrap;
 	}
-	.Home_page_Right_detail a{
+	.home_page_Right_detail a{
 		font-size: 16px;
 		background-color: rgba(255, 255, 255, 0.1);
 		color: #ffffff;
@@ -215,22 +213,17 @@ texarea.form-control{
 		text-decoration: none;
 		cursor: pointer;
 	}
-	.Home_page_Right_detail a:hover{
+	.home_page_Right_detail a:hover{
 		background-color: rgba(255, 255, 255, 0.3);
 	}
 @media only screen and (min-width:768px) {
 
-	.Home_page_left{
+	.home_page_left{
 		background-color: #000000;
 		height: 100vh;
 	}
-	.Home_page_left_border{
-		padding: 0 ;
-	}
-	.Home_page_left_border{
-		max-width: 100%;
-	}
-	.Home_page_left_detail {
+
+	.home_page_left_detail {
 	    border: 1px solid #ffffff;
 	    position: absolute;
 	    top: 50%;
@@ -240,17 +233,17 @@ texarea.form-control{
 	    width: 350px;
 	    height: 500px;
 	}
-	.Home_page_left_detail p{
+	.home_page_left_detail p{
 		font-size: 30px;
 		font-family: 'Proxima Nova';
 		font-weight: 600;
 		color: #ffffff;
     white-space: nowrap;
 	}
-	.Home_page_left_detail p:first-child{
+	.home_page_left_detail p:first-child{
 		margin-top: 35%;
 	}
-	.Home_page_left_detail a {
+	.home_page_left_detail a {
     font-size: 24px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -274,18 +267,18 @@ texarea.form-control{
     top: 30%;
 		cursor: pointer;
 	}
-	.Home_page_Right{
+	.home_page_Right{
 		height: 100vh;
 	}
-	.Home_page_Right_detail{
+	.home_page_Right_detail{
 		position: relative;
 		top: 40%;
 	}
-	.Home_page_Right_detail p{
+	.home_page_Right_detail p{
 		color: #ffffff;
 		font-size: 30px;
 	}
-	.Home_page_Right_detail a {
+	.home_page_Right_detail a {
     font-size: 24px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -463,7 +456,7 @@ texarea.form-control{
 	    bottom: 0;
 	    overflow: auto;
 	}
-	
+
 	.modal-student-description::before {
 		content: "";
 		width: 0;
