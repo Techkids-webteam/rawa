@@ -423,7 +423,7 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 /*---------------------------*\
   RAWA Features
-\*----------------------------*/
+\*---------------------------*/
 add_action( 'user_register', 'rawa_user_register' );
 function rawa_user_register( $user_id ) {
   //update_user_meta( $user_id, 'like', 0);
