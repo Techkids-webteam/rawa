@@ -426,7 +426,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 \*----------------------------*/
 add_action( 'user_register', 'rawa_user_register' );
 function rawa_user_register( $user_id ) {
-  update_user_meta( $user_id, 'like', 0);
+  //update_user_meta( $user_id, 'like', 0);
+  // TODO init like stuffs here
   update_user_meta( $user_id, 'self_description', '');
 }
 
@@ -446,7 +447,9 @@ function approve_user_description($user_id){
 }
 
 function upvote_user($user_id){
-  if(in_array( 'subscriber', (array) $user->roles )){}
+  if(in_array( 'subscriber', (array) $user->roles )){
+    // TODO do something with the like stuff here
+  }
 }
 
 add_role( 'manager', __(
