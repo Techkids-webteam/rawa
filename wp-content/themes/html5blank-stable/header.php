@@ -19,8 +19,10 @@
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/libs/slick/slick/slick.min.js"></script>
-		
+		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
+
 		<?php wp_head(); ?>
 
 		<script>

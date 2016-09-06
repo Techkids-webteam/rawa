@@ -320,6 +320,11 @@ texarea.form-control{
 
 .student-item {
 	list-style: none;
+	outline: 0 none;
+}
+
+#random-list .student-item {
+	margin-bottom: 20px;
 }
 
 .student-item img {
@@ -340,6 +345,10 @@ texarea.form-control{
 
 .student-info a:hover{
 	color: #000000;
+}
+
+.student-info .col-xs-12{
+	margin-top: 5px;
 }
 
 .student-info-container::before {
@@ -402,7 +411,6 @@ texarea.form-control{
 	font-size: 0;
 	border-radius: 100%;
 	background-color: #333333;
-	opacity: 0.5;
 	outline: 0 none;
 	border: 0 none;
 	padding: 0;
@@ -411,9 +419,64 @@ texarea.form-control{
 
 .slick-dots .slick-active button,
 .slick-dots button:hover{
-	opacity: 1;
+	background: #ff9900;
 }
 
+.modal-student {
+	border-radius: 0;
+}
+
+.modal-student .row {
+	margin: 0;
+}
+
+.modal-student .modal-student-img {
+	padding: 0
+}
+
+.modal-student-img img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+.modal-student-description {
+	position: relative;
+}
+
+.modal-student-description::before {
+	content: "";
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-bottom: 20px solid #ffffff;
+	position: absolute;
+	bottom: 100%;
+	left: 20%;
+}
+
+@media (min-width: 992px) {
+
+	.modal-student-description {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    overflow: auto;
+	}
+	
+	.modal-student-description::before {
+		content: "";
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+		border-right: 20px solid #ffffff;
+		position: absolute;
+		top: 50%;
+		left: -7%;
+	}
+
+
+}
 /* SV5TOT PAGE ENDS*/
 
 
@@ -449,7 +512,6 @@ texarea.form-control{
 }
 
 
-<<<<<<< HEAD
 /*------------------------------------*\
     PRINT
 \*------------------------------------*/
