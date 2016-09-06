@@ -385,6 +385,21 @@ texarea.form-control{
 	border-radius: 0;
 }
 
+.modal-student .close {
+	position: absolute;
+	right: 10px;
+	z-index: 10;
+	opacity: 0.8;
+	color: #d3d3d3;
+	font-size: 40px;
+	outline: 0 none;
+	text-shadow: none;
+}
+
+.modal-student .close:hover{
+	color: #ffffff;
+}
+
 .modal-student .row {
 	margin: 0;
 }
@@ -413,7 +428,11 @@ texarea.form-control{
 	left: 20%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
+
+	.modal-student .close {
+		display: none;
+	}
 
 	.modal-student-description {
 		position: absolute;
@@ -433,7 +452,6 @@ texarea.form-control{
 		top: 50%;
 		left: -7%;
 	}
-
 
 }
 /* SV5TOT PAGE ENDS*/
