@@ -383,6 +383,11 @@ texarea.form-control{
 	box-shadow: none;
 }
 
+.img-container img.avatar {
+	min-width: 100%;
+	height: auto;
+}
+
 /*.btn-default.btn-rated:focus {
 	border-color: #c63b3b;
 	color: #ffffff;

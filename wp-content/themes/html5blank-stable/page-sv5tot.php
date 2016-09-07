@@ -1,8 +1,7 @@
 <?php get_header(); ?>
-<?php $user_info = get_userdata(1);
-      $username = $user_info->user_login;
-      update_user_meta( 1, 'like', 3);
-?>
+<?php $blogusers = get_users(); 
+      update_user_meta( 1, 'description', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor');
+?> 
 <!--MODAL -->
 <div class="modal fade bs-example-modal-lg" id="modal-student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -18,7 +17,7 @@
 					<a href="#"><h4><?php echo $username; ?></h4></a>
 				</div>
 				<div class="col-xs-4">
-					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
+					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <?php echo $like ?></button>
 				</div>
 				<div class="col-xs-12">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
@@ -115,28 +114,35 @@
 		<h2>RANDOM LIST</h2>
 	</div>
 	<ul class="row student-list" id="random-list">
+
+	<?php
+		foreach ($blogusers as $user):
+	?>
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<?php echo get_avatar( $user->ID, 300);?>
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
 					<div class="student-info clearfix">
 						<div class="col-xs-8">
-							<a href="#"><h4>Lorem opsum</h4></a>
+							<a href="#"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
+							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <?php echo $user->like; ?></button>
 						</div>
 						<div class="col-xs-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
+							<p><?php echo $user->description ?> </p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</li>
+		<?php
+			endforeach;
+		?>
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
@@ -163,7 +169,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_3.jpg">
+						<img src="http://2.gravatar.com/avatar/26ac1b5d2622fdcb33dc3f84bfeeb36a?s=300&d=mm&r=g">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -251,7 +257,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_7.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -273,7 +279,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">

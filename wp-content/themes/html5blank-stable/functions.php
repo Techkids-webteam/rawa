@@ -448,7 +448,7 @@ function approve_user_description($user_id){
 
 function upvote_user($user_id){
   if(in_array( 'subscriber', (array) $user->roles )){
-    // TODO do something with the like stuff here
+    // TODO do something with the like stuff here 
   }
 }
 
