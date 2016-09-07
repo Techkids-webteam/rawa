@@ -1,5 +1,8 @@
 <?php get_header(); ?>
-
+<?php $user_info = get_userdata(1);
+      $username = $user_info->user_login;
+      update_user_meta( 1, 'like', 3);
+?>
 <!--MODAL -->
 <div class="modal fade bs-example-modal-lg" id="modal-student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -12,7 +15,7 @@
       	<div class="col-sm-6 modal-student-description">
 			<div class="student-info clearfix">
 				<div class="col-xs-8">
-					<a href="#"><h4>Lorem opsum</h4></a>
+					<a href="#"><h4><?php echo $username; ?></h4></a>
 				</div>
 				<div class="col-xs-4">
 					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
