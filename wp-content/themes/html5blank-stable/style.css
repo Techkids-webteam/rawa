@@ -87,6 +87,15 @@ texarea.form-control{
 	display: none;
 }
 
+.home-page .navbar-collapse.collapse.in{
+	background: rgba(0,0,0,0.8);
+	height: 100vh;
+	max-height: none;
+}
+.home-page .navbar-collapse.collapsing{
+	background: rgba(0,0,0,0.8);
+}
+
 .home-page.navbar-default .navbar-nav > li > a,
 .home-page.navbar-default .navbar-nav > .open > a,
 .home-page.navbar-default .navbar-nav > .open > a:focus,
