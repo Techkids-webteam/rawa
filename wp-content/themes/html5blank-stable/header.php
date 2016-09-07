@@ -54,8 +54,18 @@
 
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      <ul class="nav navbar-nav navbar-right">
-								<?php wp_list_pages( array( 'title_li' => '' ) ); ?>
-								<?php if(is_user_logged_in()) : ?>
+								<?php
+									$current_user = wp_get_current_user();
+									if(in_array( 'manager', (array)$current_user->roles)){
+										wp_list_pages( array( 'title_li' => '') );
+									}
+									else{
+										$page_to_exclude = get_page_by_path('approve');
+										wp_list_pages( array( 'title_li' => '', 'exclude' => $page_to_exclude->ID ) );
+									}
+
+									if(is_user_logged_in()) :
+								?>
 									<li class="dropdown">
 					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo get_user_meta( get_current_user_id(), 'nickname', true); ?> <span class="caret"></span></a>
 					          <ul class="dropdown-menu">
