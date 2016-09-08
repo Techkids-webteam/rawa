@@ -304,7 +304,12 @@
 	$('body').on('click', '.btn-rated', function() {
 		var id = $(this).attr('data-id');
 		var love = $(this).children('.like-count').text();
-		$(this).children('.like-count').text(parseInt(love) +1)
+		if(!$(this).hasClass('active')) {
+			$(this).children('.like-count').text(parseInt(love) + 1)
+		}else {
+			$(this).children('.like-count').text(parseInt(love) - 1)
+		}
+		
 	})
 </script>
 
