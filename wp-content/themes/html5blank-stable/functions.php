@@ -426,8 +426,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 \*---------------------------*/
 add_action( 'user_register', 'rawa_user_register' );
 function rawa_user_register( $user_id ) {
-  //update_user_meta( $user_id, 'like', 0);
-  // TODO init like stuffs here
+  update_user_meta( $user_id, 'like', array());
+    // TODO init like stuffs here
   update_user_meta( $user_id, 'self_description', '');
 }
 
@@ -447,8 +447,28 @@ function approve_user_description($user_id){
 }
 
 function upvote_user($user_id){
-  if(in_array( 'subscriber', (array) $user->roles )){
-    // TODO do something with the like stuff here 
+    $current_user = wp_get_current_user();
+    if(
+        in_array( 'administrator', (array) $current_user->roles )
+        || in_array( 'editor', (array) $current_user->roles )
+        || in_array( 'author', (array) $current_user->roles )
+        || in_array( 'contributor', (array) $current_user->roles )
+        || in_array( 'subcriber', (array) $current_user->roles )
+        || in_array( 'manager', (array) $current_user->roles )
+    ){
+        echo "hehe ";
+        // TODO do something with the like stuff here 
+        $likes = get_user_meta($user_id, 'like', true);
+
+        if (!in_array($current_user->ID, $likes)) {
+            array_push($likes, $current_user->ID);
+            
+        } else {
+            $key = array_search($current_user->ID, $likes);
+            unset($likes[$key]);
+        }
+
+        update_user_meta($user_id, 'like', $likes);
   }
 }
 

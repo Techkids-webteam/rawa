@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 <?php $blogusers = get_users(); 
-      update_user_meta( 1, 'description', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor');
 ?> 
 <!--MODAL -->
 <div class="modal fade bs-example-modal-lg" id="modal-student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -122,7 +121,7 @@
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
-						<?php echo get_avatar( $user->ID, 300);?>
+						<?php echo get_avatar( $user->ID, 650);?>
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
@@ -131,7 +130,13 @@
 							<a href="#"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated" data-id = "<?php  echo $user->ID;?>"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo $user->like; ?></span></button>
+							<button class="btn btn-default btn-rated 
+							<?php
+								if(in_array($current_user->ID, $user->like)) {
+									echo " active";
+								};
+							?>
+							" data-id = "<?php  echo $user->ID;?>"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo count($user->like); ?></span></button>
 						</div>
 						<div class="col-xs-12">
 							<p><?php echo $user->description ?> </p>
@@ -306,9 +311,23 @@
 		var love = $(this).children('.like-count').text();
 		if(!$(this).hasClass('active')) {
 			$(this).children('.like-count').text(parseInt(love) + 1)
-		}else {
+		} else {
 			$(this).children('.like-count').text(parseInt(love) - 1)
 		}
+
+	  $.ajax({
+	    url     : "<?php echo get_template_directory_uri(); ?>/ajax-upvote-user.php",
+	    type    : "POST",
+	    data    : {'user_id' : $(this).attr('data-id')}
+	  })
+	  .done(function(result){
+	    if(result == 'success'){
+	      alert('Success');
+	    }
+	  })
+	  .fail(function(err){
+	    alert('An error has occured while processing the request: ' + err);
+	  });
 		
 	})
 </script>
