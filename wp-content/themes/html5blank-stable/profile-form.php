@@ -33,7 +33,20 @@
 							__( 'Tài khoản của bạn đang chờ thay đổi sang địa chỉ email mới %1$s. <a href="%2$s">Hủy thay đổi</a>', 'theme-my-login' ),
 							'<code>' . $new_email['newemail'] . '</code>',
 							esc_url( self_admin_url( 'profile.php?dismiss=' . $current_user->ID . '_new_email' ) )
-					); ?>
+					);
+					?>
+					</p>
+					<?php endif; ?>
+
+					<?php
+					if (in_array( 'pending', (array) $current_user->roles ))  : ?>
+					<p class="help-block bg-error">
+					<?php
+						printf(
+						__( '<span class="glyphicon glyphicon-alert" aria-hidden="true"> Tài khoản của bạn chưa xác nhận địa chỉ email. <a href="%s">Gửi lại thư kích hoạt</a>?', 'theme-my-login' ),
+						Theme_My_Login::get_page_link( 'login', array( 'action' => 'sendactivation', 'login' => $current_user->user_login ) )
+					);
+					?>
 					</p>
 					<?php endif; ?>
 				</div>

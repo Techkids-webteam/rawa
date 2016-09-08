@@ -424,6 +424,35 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 /*---------------------------*\
   RAWA Features
 \*---------------------------*/
+add_action('login_form_register', 'rawa_login_form_register');
+function rawa_login_form_register(){
+  if ($_SERVER['REQUEST_METHOD'] != 'POST')
+    return;
+  if(  !(empty( $_POST['khoa'] )         || trim( $_POST['khoa'] ) == '')
+    && !(empty( $_POST['student_year'] ) || trim( $_POST['student_year'] ) == '')
+    && !(empty( $_POST['sid'] )          || trim( $_POST['sid'] ) == '')){
+
+    $_POST['user_login'] = $_POST['student_year'] + $_POST['khoa'] + $_POST['sid'];
+  }
+}
+add_action( 'registration_errors', 'rawa_register_errors' );
+function rawa_register_errors($errors, $sanitized_user_login, $user_email){
+  if ( empty( $_POST['nickname'] ) || trim( $_POST['nickname'] ) == '' ) {
+    $errors->add( 'nickname_error', __( '<strong>Lỗi</strong>: Xin hãy nhập họ tên của bạn', 'mydomain' ) );
+  }
+  if ( empty( $_POST['student_year'] ) || trim( $_POST['student_year'] ) == '' ) {
+    $errors->add( 'username_error', __( '<strong>Lỗi</strong>: Xin hãy chọn khoá học', 'mydomain' ) );
+  }
+  if ( empty( $_POST['khoa'] ) || trim( $_POST['khoa'] ) == '' ) {
+    $errors->add( 'username_error', __( '<strong>Lỗi</strong>: Xin hãy chọn khoa của bạn', 'mydomain' ) );
+  }
+  if ( empty( $_POST['sid'] ) || trim( $_POST['sid'] ) == '' ) {
+    $errors->add( 'username_error', __( '<strong>Lỗi</strong>: Xin hãy nhập 4 số cuối MSV', 'mydomain' ) );
+  }
+
+  return $errors;
+}
+
 add_action( 'user_register', 'rawa_user_register' );
 function rawa_user_register( $user_id ) {
   update_user_meta( $user_id, 'like', array());
