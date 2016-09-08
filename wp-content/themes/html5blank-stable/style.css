@@ -285,8 +285,6 @@ texarea.form-control{
 	}
 }
 
-
-/*-----------------Home-page-the-end----------------*/
 /* HOME PAGE ENDS */
 
 
@@ -396,11 +394,6 @@ texarea.form-control{
 	min-width: 100%;
 	height: auto;
 }
-
-/*.btn-default.btn-rated:focus {
-	border-color: #c63b3b;
-	color: #ffffff;
-}*/
 
 .slick-dots{
 	text-align: center;
@@ -513,7 +506,61 @@ texarea.form-control{
 /* SV5TOT PAGE ENDS*/
 
 
+/* LOGIN FLOW PAGE */
+.login_flow_container{
+	box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+	padding-bottom: 15px;
+	margin-bottom: 40px;
+}
 
+.login_flow_container h1{
+	position: relative;
+	background: #fbad18;
+	color: white;
+	padding: 5px 15px;
+	margin: 0 -15px 30px -15px;
+}
+
+.login_flow_container h1:after{
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border-right: 12px solid transparent;
+	border-left: 12px solid transparent;
+	border-top: 20px solid #fbad18;
+	position: absolute;
+	top: 100%;
+	right: 60px;
+}
+
+.form-group label{
+	text-transform: uppercase;
+}
+
+.form_button {
+	display: inline-block;
+	padding: 7px 10px;
+	margin: 0 auto;
+	background: #fbad18;
+	color: #ffffff;
+	text-transform: uppercase;
+	border: 0 none;
+}
+
+.tml-action-links {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.tml-action-links li{
+	display: inline-block;
+	padding: 0;
+	margin: 0 10px;
+}
+/* LOGIN FLOW PAGE ENDS */
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/

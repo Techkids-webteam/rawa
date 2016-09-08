@@ -65,14 +65,14 @@ class Theme_My_Login_Custom_Passwords extends Theme_My_Login_Abstract {
 	public function password_fields() {
 		$template = Theme_My_Login::get_object()->get_active_instance();
 		?>
-		<p class="tml-user-pass1-wrap">
+		<div class="form-group tml-user-pass1-wrap">
 			<label for="pass1<?php $template->the_instance(); ?>"><?php _e( 'Password', 'theme-my-login' ); ?></label>
-			<input autocomplete="off" name="pass1" id="pass1<?php $template->the_instance(); ?>" class="input" size="20" value="" type="password" />
-		</p>
-		<p class="tml-user-pass2-wrap">
+			<input autocomplete="off" name="pass1" id="pass1<?php $template->the_instance(); ?>" class="form-control" size="20" value="" type="password" />
+		</div>
+		<div class="form-group tml-user-pass2-wrap">
 			<label for="pass2<?php $template->the_instance(); ?>"><?php _e( 'Confirm Password', 'theme-my-login' ); ?></label>
-			<input autocomplete="off" name="pass2" id="pass2<?php $template->the_instance(); ?>" class="input" size="20" value="" type="password" />
-		</p>
+			<input autocomplete="off" name="pass2" id="pass2<?php $template->the_instance(); ?>" class="form-control" size="20" value="" type="password" />
+		</div>
 		<?php
 	}
 
@@ -311,4 +311,3 @@ class Theme_My_Login_Custom_Passwords extends Theme_My_Login_Abstract {
 Theme_My_Login_Custom_Passwords::get_object();
 
 endif;
-
