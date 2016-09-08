@@ -41,7 +41,7 @@
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
-					<a href="#" data-toggle="modal" data-target="#modal-student">
+					<a href="#">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
 					</a>
 				</div>
@@ -120,7 +120,7 @@
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
-					<a href="#">
+					<a href="#" data-id = "<?php  echo $user->ID;?>"	>
 						<?php echo get_avatar( $user->ID, 650);?>
 					</a>
 				</div>
@@ -148,7 +148,7 @@
 		<?php
 			endforeach;
 		?>
-		<li class="col-md-4 col-sm-4 student-item">
+<!-- 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
 					<a href="#">
@@ -301,11 +301,12 @@
 					</div>
 				</div>
 			</div>
-		</li>
+		</li> -->
 	</ul>	
 </div>
 
 <script type="text/javascript">
+	//Love Button
 	$('body').on('click', '.btn-rated', function() {
 		var id = $(this).attr('data-id');
 		var love = $(this).children('.like-count').text();
@@ -322,7 +323,7 @@
 	  })
 	  .done(function(result){
 	    if(result == 'success'){
-	      alert('Success');
+	      
 	    }
 	  })
 	  .fail(function(err){
@@ -330,6 +331,21 @@
 	  });
 		
 	})
+
+	//Modal
+	$('body').on('click', '.img-container a' ,function(e){
+		e.preventDefault();
+		$('#modal-student').modal('show')
+		$.ajax({
+			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
+			type	: "POST",
+			data    : {'user_id' : $(this).attr('data-id')}
+		})
+		.done(function (res) {
+			console.log(res);
+		})
+	})
+
 </script>
 
 <?php get_footer(); ?>

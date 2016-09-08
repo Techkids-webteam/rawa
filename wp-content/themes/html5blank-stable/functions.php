@@ -446,6 +446,11 @@ function approve_user_description($user_id){
   }
 }
 
+function get_user_modal($user_id){
+    $data = get_user_meta($user_id);
+    print json_encode($data);
+}
+
 function upvote_user($user_id){
     $current_user = wp_get_current_user();
     if(
@@ -456,7 +461,6 @@ function upvote_user($user_id){
         || in_array( 'subcriber', (array) $current_user->roles )
         || in_array( 'manager', (array) $current_user->roles )
     ){
-        echo "hehe ";
         // TODO do something with the like stuff here 
         $likes = get_user_meta($user_id, 'like', true);
 
