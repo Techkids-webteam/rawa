@@ -131,7 +131,7 @@
 							<a href="#"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <?php echo $user->like; ?></button>
+							<button class="btn btn-default btn-rated" data-id = "<?php  echo $user->ID;?>"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo $user->like; ?></span></button>
 						</div>
 						<div class="col-xs-12">
 							<p><?php echo $user->description ?> </p>
@@ -299,5 +299,13 @@
 		</li>
 	</ul>	
 </div>
+
+<script type="text/javascript">
+	$('body').on('click', '.btn-rated', function() {
+		var id = $(this).attr('data-id');
+		var love = $(this).children('.like-count').text();
+		$(this).children('.like-count').text(parseInt(love) +1)
+	})
+</script>
 
 <?php get_footer(); ?>

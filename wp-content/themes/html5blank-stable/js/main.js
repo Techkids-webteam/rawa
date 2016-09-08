@@ -2,7 +2,6 @@ $(document).ready(function() {
 
 	$('body').on('click', '.btn-rated', function(e){
 		e.preventDefault();
-		console.log(parent)
 		$(this).toggleClass('active')
 	})
 
