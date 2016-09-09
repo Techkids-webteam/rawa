@@ -16,14 +16,10 @@
 					<a href="#"><h4><?php echo $username; ?></h4></a>
 				</div>
 				<div class="col-xs-4">
-					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <?php echo $like ?></button>
+					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
 				</div>
 				<div class="col-xs-12">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
+					<p></p>
 				</div>
 			</div>
       	</div>
@@ -339,9 +335,17 @@
 		$.ajax({
 			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
 			type	: "POST",
-			data    : {'user_id' : $(this).attr('data-id')}
+			data    : {'user_id' : $(this).attr('data-id')},
+			dataType: "json"
 		})
 		.done(function (res) {
+			$('.modal-student-description .col-xs-8 a h4').html(res.nickname);
+			$('.modal-student-description .col-xs-12 p').html(res.description);
+			$('.modal-student-description .like-count').html(res.like);
+			$('.modal-student-img').html(res.img);
+			$('.modal-student-description button').removeClass("active");
+			$('.modal-student-description button').addClass(res.status);
+			$('.modal-student-description button').attr("data-id", res.id);
 			console.log(res);
 		})
 	})

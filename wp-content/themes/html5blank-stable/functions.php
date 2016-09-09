@@ -476,8 +476,23 @@ function approve_user_description($user_id){
 }
 
 function get_user_modal($user_id){
+    $current_user = wp_get_current_user();
     $data = get_user_meta($user_id);
-    print json_encode($data);
+    $likes = get_user_meta($user_id, 'like', true);
+    $img = get_avatar($user_id, 650);
+    $res = array();
+    if(in_array($current_user->ID, $likes)) {
+        $res["status"] = "active";
+    } else {
+        $res["status"] = "";
+    }
+    $res["id"] = $user_id;
+    $res["nickname"] = $data["nickname"];
+    $res["like"] = count($likes);
+    $res["description"] = $data["description"];
+    $res["img"] = $img;
+    print json_encode($res);
+
 }
 
 function upvote_user($user_id){
