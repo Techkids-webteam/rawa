@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-	$('body').on('click', '.btn-rated', function(e){
-		e.preventDefault();
-		$(this).toggleClass('active')
-	})
-
 	$('#top-list').slick({
 		dots: false,
 		infinite: false,
