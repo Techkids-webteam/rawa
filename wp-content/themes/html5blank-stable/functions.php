@@ -503,27 +503,26 @@ function get_user_modal($user_id){
 }
 
 function upvote_user($user_id){
-    $current_user = wp_get_current_user();
-    if(
-        in_array( 'administrator', (array) $current_user->roles )
-        || in_array( 'editor', (array) $current_user->roles )
-        || in_array( 'author', (array) $current_user->roles )
-        || in_array( 'contributor', (array) $current_user->roles )
-        || in_array( 'subcriber', (array) $current_user->roles )
-        || in_array( 'manager', (array) $current_user->roles )
-    ){
-        // TODO do something with the like stuff here
-        $likes = get_user_meta($user_id, 'like', true);
+  $current_user = wp_get_current_user();
+  if( is_user_logged_in()
+    && !in_array( 'pending', (array) $current_user->roles )
+  ){
+    $likes = get_user_meta($user_id, 'like', true);
 
-        if (!in_array($current_user->ID, $likes)) {
-            array_push($likes, $current_user->ID);
+    if(!is_array($likes)) $likes = array();
 
-        } else {
-            $key = array_search($current_user->ID, $likes);
-            unset($likes[$key]);
-        }
-        update_user_meta($user_id, 'like_num', count($likes));
-        update_user_meta($user_id, 'like', $likes);
+    if (!in_array($current_user->ID, $likes)) {
+        array_push($likes, $current_user->ID);
+    } else {
+        $key = array_search($current_user->ID, $likes);
+        unset($likes[$key]);
+    }
+    update_user_meta($user_id, 'like_num', count($likes));
+    update_user_meta($user_id, 'like', $likes);
+    return true;
+  }
+  else{
+    return false;
   }
 }
 

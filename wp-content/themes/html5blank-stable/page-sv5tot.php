@@ -41,13 +41,13 @@ $args = array(
 	'meta_key' => 'like_num',
 	'orderby' => 'meta_value',
 	'order' => 'DESC',
-	'number' => 6
-);	
+	'number' => 3
+);
 $top_user_query = new WP_User_Query( $args );
 
 // User Loop
 if ( ! empty( $top_user_query->results ) ) {
-	foreach ( $top_user_query->results as $top_user ) : 
+	foreach ( $top_user_query->results as $top_user ) :
 
 ?>
 
@@ -64,7 +64,7 @@ if ( ! empty( $top_user_query->results ) ) {
 					<a href="#" class="user-detail-link" data-id="<?php echo $top_user->ID;?>"><h4><?php echo $top_user->nickname ?></h4></a>
 				</div>
 				<div class="col-xs-4">
-					<button class="btn btn-default btn-rated 
+					<button class="btn btn-default btn-rated
 					<?php
 						if(in_array($current_user->ID, $top_user->like)) {
 							echo " active";
@@ -78,7 +78,7 @@ if ( ! empty( $top_user_query->results ) ) {
 			</div>
 		</div>
 	</div>
-</li>	
+</li>
 
 <?php
 	endforeach;
@@ -102,10 +102,11 @@ if ( ! empty( $top_user_query->results ) ) {
 
 		$user_array = array(
 			'role__not_in' => array('Pending'),
-			'orderby' => 'rand'
-		);	
+			'orderby' => 'rand',
+			'number' => 6
+		);
 		$blogusers = new WP_User_Query( $user_array );
-		foreach ( $blogusers->results as $user ) : 
+		foreach ( $blogusers->results as $user ) :
 	?>
 		<script>used_user.push(<?php echo $user->ID ?>);</script>
 		<li class="col-md-4 col-sm-4 student-item">
@@ -121,7 +122,7 @@ if ( ! empty( $top_user_query->results ) ) {
 							<a href="#" class="user-detail-link" data-id = "<?php  echo $user->ID;?>"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated 
+							<button class="btn btn-default btn-rated
 							<?php
 								if(in_array($current_user->ID, $user->like)) {
 									echo " active";
@@ -139,7 +140,7 @@ if ( ! empty( $top_user_query->results ) ) {
 		<?php
 			endforeach;
 		?>
-	</ul>	
+	</ul>
 </div>
 
 <script type="text/javascript">
@@ -166,19 +167,19 @@ if ( ! empty( $top_user_query->results ) ) {
 	  })
 	  .done(function(result){
 	    if(result == 'success'){
-	      
+
 	    }
 	  })
 	  .fail(function(err){
 	    alert('An error has occured while processing the request: ' + err);
 	  });
-		
+
 	})
 
 	//Modal
 	$('body').on('click', '.user-detail-link' ,function(e){
 		e.preventDefault();
-		
+
 		$.ajax({
 			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
 			type	: "POST",
