@@ -41,7 +41,7 @@ $args = array(
 	'meta_key' => 'like_num',
 	'orderby' => 'meta_value',
 	'order' => 'DESC',
-	'number' => 3
+	'number' => 6
 );	
 $top_user_query = new WP_User_Query( $args );
 
@@ -182,8 +182,7 @@ if ( ! empty( $top_user_query->results ) ) {
 		$.ajax({
 			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
 			type	: "POST",
-			data    : {'user_id' : $(this).attr('data-id')},
-			dataType: "json"
+			data    : {'user_id' : $(this).attr('data-id')}
 		})
 		.done(function (res) {
 			$('.modal-student-description .col-xs-8 a h4').html(res.nickname);
@@ -196,6 +195,29 @@ if ( ! empty( $top_user_query->results ) ) {
 			$('#modal-student').modal('show')
 			console.log(res);
 		})
+	})
+	var allowScroll = true;
+	$(window).scroll(function(){
+		if(!allowScroll) return ;
+		console.log(allowScroll);
+		if ($(document).height() - $(window).height() - 200 <= $(window).scrollTop()){
+			allowScroll = false;
+			$.ajax({
+				url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-users.php",
+				type    : "POST",
+				data    : {"exclude" : used_user.join(",")}
+
+			}).done(function (res){
+
+				$items = $(res)
+				$('#random-list').append($items).masonry('appended', $items);
+			}).fail(function(err){
+				console.log(err)
+				$('.random-list-container').append("<div class='alert alert-danger' role='alert'>" + err +"</div>");
+			}).always(function(){
+				allowScroll = true;
+			})
+		}
 	})
 
 </script>
