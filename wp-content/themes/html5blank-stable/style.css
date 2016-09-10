@@ -396,6 +396,23 @@ texarea.form-control{
 	box-shadow: none;
 }
 
+
+.btn-none {
+	margin-top: 5px;
+}
+
+.btn-default.btn-none:hover {
+	background: none;
+	border: 1px solid rgb(204, 204, 204);
+}
+
+.btn-default.btn-none:focus,
+.btn-default.btn-none:active {
+	background: #ffffff;
+	outline: 0 none;
+	box-shadow: none;
+}
+
 .img-container img.avatar {
 	width: 100%;
 	height: auto;

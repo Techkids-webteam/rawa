@@ -10,7 +10,7 @@
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<div class="row">
 				<div class="col-sm-6 modal-student-img">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
+					
 				</div>
 				<div class="col-sm-6 modal-student-description">
 					<div class="student-info clearfix">
@@ -18,7 +18,15 @@
 							<a href="#"><h4><?php echo $username; ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
+							<button class="btn btn-default 
+								<?php
+									if(is_user_logged_in()){
+										echo " btn-rated";
+									} else {
+										echo " btn-none";
+									}
+								?>
+							"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
 						</div>
 						<div class="col-xs-12">
 							<p></p>
@@ -64,8 +72,13 @@ if ( ! empty( $top_user_query->results ) ) {
 					<a href="#" class="user-detail-link" data-id="<?php echo $top_user->ID;?>"><h4><?php echo $top_user->nickname ?></h4></a>
 				</div>
 				<div class="col-xs-4">
-					<button class="btn btn-default btn-rated
+					<button class="btn btn-default
 					<?php
+						if(is_user_logged_in()){
+							echo " btn-rated";
+						} else {
+							echo " btn-none";
+						}
 						if(in_array($current_user->ID, $top_user->like)) {
 							echo " active";
 						};
@@ -122,12 +135,17 @@ if ( ! empty( $top_user_query->results ) ) {
 							<a href="#" class="user-detail-link" data-id = "<?php  echo $user->ID;?>"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated
-							<?php
-								if(in_array($current_user->ID, $user->like)) {
-									echo " active";
-								};
-							?>
+							<button class="btn btn-default 
+								<?php
+									if(is_user_logged_in()){
+										echo " btn-rated";
+									} else {
+										echo " btn-none";
+									}
+									if(in_array($current_user->ID, $top_user->like)) {
+										echo " active";
+									};
+								?>
 							" data-id = "<?php  echo $user->ID;?>"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo count($user->like); ?></span></button>
 						</div>
 						<div class="col-xs-12">
