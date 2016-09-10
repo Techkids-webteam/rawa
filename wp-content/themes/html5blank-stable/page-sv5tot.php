@@ -159,7 +159,6 @@ if ( ! empty( $top_user_query->results ) ) {
 			}
 		});
 
-
 	  $.ajax({
 	    url     : "<?php echo get_template_directory_uri(); ?>/ajax-upvote-user.php",
 	    type    : "POST",
@@ -182,18 +181,19 @@ if ( ! empty( $top_user_query->results ) ) {
 
 		$.ajax({
 			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
-			type	: "POST",
+			type		: "POST",
+			dataType: "json",
 			data    : {'user_id' : $(this).attr('data-id')}
 		})
 		.done(function (res) {
-			$('.modal-student-description .col-xs-8 a h4').html(res.nickname);
-			$('.modal-student-description .col-xs-12 p').html(res.description);
-			$('.modal-student-description .like-count').html(res.like);
-			$('.modal-student-img').html(res.img);
-			$('.modal-student-description button').removeClass("active");
-			$('.modal-student-description button').addClass(res.status);
-			$('.modal-student-description button').attr("data-id", res.id);
-			$('#modal-student').modal('show')
+			$('#modal-student .col-xs-8 a h4').html(res.nickname);
+			$('#modal-student .col-xs-12 p').html(res.description);
+			$('#modal-student .like-count').html(res.like);
+			$('#modal-student .modal-student-img').html(res.img);
+			$('#modal-student button').removeClass("active");
+			$('#modal-student button').addClass(res.status);
+			$('#modal-student button').attr("data-id", res.id);
+			$('#modal-student').modal('show');
 			console.log(res);
 		})
 	})
