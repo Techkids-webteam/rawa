@@ -13,7 +13,7 @@
 						<?php $template->the_action_template_message( 'profile' ); ?>
 						<?php $template->the_errors(); ?>
 						<div class="form-group">
-					    <label class="col-md-3 col-sm-4 control-label">Mã sinh viên: </label>
+					    <label class="col-md-3 col-sm-4 control-label">Mã sinh viên</label>
 					    <div class="col-md-9 col-sm-8">
 					      <p class="form-control-static"><?php echo esc_attr( $profileuser->user_login ); ?></p>
 					    </div>
