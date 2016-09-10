@@ -200,7 +200,6 @@ if ( ! empty( $top_user_query->results ) ) {
 	var allowScroll = true;
 	$(window).scroll(function(){
 		if(!allowScroll) return ;
-		console.log(allowScroll);
 		if ($(document).height() - $(window).height() - 200 <= $(window).scrollTop()){
 			allowScroll = false;
 			$.ajax({
