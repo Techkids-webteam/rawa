@@ -1,105 +1,93 @@
 <?php get_header(); ?>
-<?php $blogusers = get_users(); 
-?> 
+
+<script>
+	used_user = [];
+</script>
 <!--MODAL -->
 <div class="modal fade bs-example-modal-lg" id="modal-student" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content modal-student">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="row">
-      	<div class="col-sm-6 modal-student-img">
-      		<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
-      	</div>
-      	<div class="col-sm-6 modal-student-description">
-			<div class="student-info clearfix">
-				<div class="col-xs-8">
-					<a href="#"><h4><?php echo $username; ?></h4></a>
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content modal-student">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<div class="row">
+				<div class="col-sm-6 modal-student-img">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student_2.jpg">
 				</div>
-				<div class="col-xs-4">
-					<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
-				</div>
-				<div class="col-xs-12">
-					<p></p>
+				<div class="col-sm-6 modal-student-description">
+					<div class="student-info clearfix">
+						<div class="col-xs-8">
+							<a href="#"><h4><?php echo $username; ?></h4></a>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
+						</div>
+						<div class="col-xs-12">
+							<p></p>
+						</div>
+					</div>
 				</div>
 			</div>
-      	</div>
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
-
 
 <div class="container top-list-container">
 	<div class="page-heading">
 		<h2>TOP RATED</h2>
 	</div>
 	<ul class="row student-list" id="top-list">
-		<li class="col-md-4 col-sm-4 student-item">
-			<div class="student-item-content clearfix">
-				<div class="img-container">
-					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
-					</a>
+<?php
+$args = array(
+	'role__not_in' => array('Pending'),
+	'meta_key' => 'like_num',
+	'orderby' => 'meta_value',
+	'order' => 'DESC',
+	'number' => 3
+);	
+$top_user_query = new WP_User_Query( $args );
+
+// User Loop
+if ( ! empty( $top_user_query->results ) ) {
+	foreach ( $top_user_query->results as $top_user ) : 
+
+?>
+
+<li class="col-md-4 col-sm-4 student-item">
+	<div class="student-item-content clearfix">
+		<div class="img-container">
+			<a href="#" class="user-detail-link" data-id="<?php echo $top_user->ID;?>">
+				<?php echo get_avatar( $top_user->ID, 650);?>
+			</a>
+		</div>
+		<div class="col-xs-12 student-info-container">
+			<div class="student-info clearfix">
+				<div class="col-xs-8">
+					<a href="#" class="user-detail-link" data-id="<?php echo $top_user->ID;?>"><h4><?php echo $top_user->nickname ?></h4></a>
 				</div>
-				<div class="col-xs-12 student-info-container">
-					<div class="student-info clearfix">
-						<div class="col-xs-8">
-							<a href="#"><h4>Lorem opsum</h4></a>
-						</div>
-						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
-						</div>
-						<div class="col-xs-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-						</div>
-					</div>
+				<div class="col-xs-4">
+					<button class="btn btn-default btn-rated 
+					<?php
+						if(in_array($current_user->ID, $top_user->like)) {
+							echo " active";
+						};
+					?>
+					" data-id="<?php echo $top_user->ID;?>" ><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo count($top_user->like); ?></span></button>
 				</div>
-			</div>
-		</li>
-		<li class="col-md-4 col-sm-4 student-item">
-			<div class="student-item-content clearfix">
-				<div class="img-container">
-					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
-					</a>
-				</div>
-				<div class="col-xs-12 student-info-container">
-					<div class="student-info clearfix">
-						<div class="col-xs-8">
-							<a href="#"><h4>Lorem opsum</h4></a>
-						</div>
-						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
-						</div>
-						<div class="col-xs-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-						</div>
-					</div>
+				<div class="col-xs-12">
+					<p></p>
 				</div>
 			</div>
-		</li>
-		<li class="col-md-4 col-sm-4 student-item">
-			<div class="student-item-content clearfix">
-				<div class="img-container">
-					<a href="#">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sample_student.jpg">
-					</a>
-				</div>
-				<div class="col-xs-12 student-info-container">
-					<div class="student-info clearfix">
-						<div class="col-xs-8">
-							<a href="#"><h4>Lorem opsum</h4></a>
-						</div>
-						<div class="col-xs-4">
-							<button class="btn btn-default btn-rated"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 1000</button>
-						</div>
-						<div class="col-xs-12">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</li>
+		</div>
+	</div>
+</li>	
+
+<?php
+	endforeach;
+	}
+
+	else {
+		echo'no user';
+	}
+?>
 	</ul>
 	<div class="student-list-dots"></div>
 </div>
@@ -111,19 +99,26 @@
 	<ul class="row student-list" id="random-list">
 
 	<?php
-		foreach ($blogusers as $user):
+
+		$user_array = array(
+			'role__not_in' => array('Pending'),
+			'orderby' => 'rand'
+		);	
+		$blogusers = new WP_User_Query( $user_array );
+		foreach ( $blogusers->results as $user ) : 
 	?>
+		<script>used_user.push(<?php echo $user->ID ?>);</script>
 		<li class="col-md-4 col-sm-4 student-item">
 			<div class="student-item-content clearfix">
 				<div class="img-container">
-					<a href="#" data-id = "<?php  echo $user->ID;?>"	>
+					<a href="#" data-id = "<?php  echo $user->ID;?>" class="user-detail-link">
 						<?php echo get_avatar( $user->ID, 650);?>
 					</a>
 				</div>
 				<div class="col-xs-12 student-info-container">
 					<div class="student-info clearfix">
 						<div class="col-xs-8">
-							<a href="#"><h4><?php echo $user->nickname ?></h4></a>
+							<a href="#" class="user-detail-link" data-id = "<?php  echo $user->ID;?>"><h4><?php echo $user->nickname ?></h4></a>
 						</div>
 						<div class="col-xs-4">
 							<button class="btn btn-default btn-rated 
@@ -148,6 +143,7 @@
 </div>
 
 <script type="text/javascript">
+	console.log(used_user)
 	//Love Button
 	$('body').on('click', '.btn-rated', function() {
 		var id = $(this).attr('data-id');
@@ -180,9 +176,9 @@
 	})
 
 	//Modal
-	$('body').on('click', '.img-container a' ,function(e){
+	$('body').on('click', '.user-detail-link' ,function(e){
 		e.preventDefault();
-		$('#modal-student').modal('show')
+		
 		$.ajax({
 			url     : "<?php echo get_template_directory_uri(); ?>/ajax-get-user-modal.php",
 			type	: "POST",
@@ -197,6 +193,7 @@
 			$('.modal-student-description button').removeClass("active");
 			$('.modal-student-description button').addClass(res.status);
 			$('.modal-student-description button').attr("data-id", res.id);
+			$('#modal-student').modal('show')
 			console.log(res);
 		})
 	})

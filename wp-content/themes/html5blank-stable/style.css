@@ -323,6 +323,12 @@ texarea.form-control{
 	position: relative;
 }
 
+.student-info h4 {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .student-info a:hover{
 	color: #000000;
 }

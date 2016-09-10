@@ -481,17 +481,19 @@ function get_user_modal($user_id){
     $likes = get_user_meta($user_id, 'like', true);
     $img = get_avatar($user_id, 650);
     $res = array();
+
     if(in_array($current_user->ID, $likes)) {
         $res["status"] = "active";
     } else {
         $res["status"] = "";
     }
+
     $res["id"] = $user_id;
     $res["nickname"] = $data["nickname"];
     $res["like"] = count($likes);
     $res["description"] = $data["description"];
     $res["img"] = $img;
-    print json_encode($res);
+    return json_encode($res);
 
 }
 
@@ -515,10 +517,17 @@ function upvote_user($user_id){
             $key = array_search($current_user->ID, $likes);
             unset($likes[$key]);
         }
-
+        update_user_meta($user_id, 'like_num', count($likes));
         update_user_meta($user_id, 'like', $likes);
   }
 }
+
+function wp_user_query_random_enable($query) {
+    if($query->query_vars["orderby"] == 'rand') {
+        $query->query_orderby = 'ORDER by RAND()';
+    }
+}
+add_filter('pre_user_query', 'wp_user_query_random_enable');
 
 add_role( 'manager', __(
   'Đội Quản Lý' ),
