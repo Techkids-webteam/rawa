@@ -482,7 +482,6 @@ function approve_user_description($user_id){
 
 function get_user_modal($user_id){
     $current_user = wp_get_current_user();
-    $data = get_user_meta($user_id);
     $likes = get_user_meta($user_id, 'like', true);
     $img = get_avatar($user_id, 650);
     $res = array();
@@ -494,12 +493,11 @@ function get_user_modal($user_id){
     }
 
     $res["id"] = $user_id;
-    $res["nickname"] = $data["nickname"];
+    $res["nickname"] = esc_html(get_user_meta($user_id, 'nickname', true));
     $res["like"] = count($likes);
-    $res["description"] = $data["description"];
+    $res["description"] = nl2br(esc_html(get_user_meta($user_id, 'description', true)));
     $res["img"] = $img;
     return json_encode($res);
-
 }
 
 function upvote_user($user_id){

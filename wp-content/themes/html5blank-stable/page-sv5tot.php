@@ -131,7 +131,7 @@ if ( ! empty( $top_user_query->results ) ) {
 							" data-id = "<?php  echo $user->ID;?>"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"><?php echo count($user->like); ?></span></button>
 						</div>
 						<div class="col-xs-12">
-							<p><?php echo $user->description ?> </p>
+							<p><?php echo nl2br(esc_html($user->description)) ?> </p>
 						</div>
 					</div>
 				</div>
