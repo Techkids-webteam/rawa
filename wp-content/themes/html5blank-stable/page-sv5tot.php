@@ -142,7 +142,7 @@ if ( ! empty( $top_user_query->results ) ) {
 									} else {
 										echo " btn-none";
 									}
-									if(in_array($current_user->ID, $top_user->like)) {
+									if(in_array($current_user->ID, $user->like)) {
 										echo " active";
 									};
 								?>
