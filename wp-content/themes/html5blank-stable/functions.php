@@ -458,6 +458,7 @@ function rawa_user_register( $user_id ) {
   update_user_meta( $user_id, 'like', array());
     // TODO init like stuffs here
   update_user_meta( $user_id, 'self_description', '');
+  update_user_meta( $user_id, 'need_approval', false);
 }
 
 add_action( 'personal_options_update', 'rawa_update_profile' );
@@ -466,12 +467,16 @@ function rawa_update_profile($user_id, $old_user_data) {
   if ( current_user_can('edit_user', $user_id) && ( isset( $_POST['self_description'] ) )){
     update_user_meta($user_id, 'self_description', trim($_POST['self_description']));
   }
+  if($_POST['submit'] == 'Lưu và gửi BQT'){
+    update_user_meta($user_id, 'need_approval', true);
+  }
 }
 
 function approve_user_description($user_id){
   $current_user = wp_get_current_user();
   if(in_array( 'manager', (array) $current_user->roles )){
     update_user_meta($user_id, 'description', get_user_meta($user_id, 'self_description', true));
+    update_user_meta($user_id, 'need_approval', false);
   }
 }
 
@@ -507,12 +512,12 @@ function upvote_user($user_id){
         || in_array( 'subcriber', (array) $current_user->roles )
         || in_array( 'manager', (array) $current_user->roles )
     ){
-        // TODO do something with the like stuff here 
+        // TODO do something with the like stuff here
         $likes = get_user_meta($user_id, 'like', true);
 
         if (!in_array($current_user->ID, $likes)) {
             array_push($likes, $current_user->ID);
-            
+
         } else {
             $key = array_search($current_user->ID, $likes);
             unset($likes[$key]);

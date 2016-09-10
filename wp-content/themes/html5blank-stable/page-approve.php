@@ -17,13 +17,19 @@ if(!in_array( 'manager', (array) $current_user->roles )){
     </thead>
     <tbody>
     <?php
-      $querystr = "select $wpdb->users.*
-      FROM $wpdb->users
-      inner join $wpdb->usermeta AS wm1 ON $wpdb->users.ID = wm1.user_id and wm1.meta_key = 'description'
-      inner join $wpdb->usermeta AS wm2 ON $wpdb->users.ID = wm2.user_id and wm2.meta_key = 'self_description'
-      where wm1.meta_value not like wm2.meta_value";
-
-      $app_users = $wpdb->get_results($querystr, OBJECT);
+			$args = array(
+				'role__not_in' => array('Pending'),
+				'meta_key' => 'need_approval',
+				'meta_value' => true
+			);
+			$app_users = get_users( $args );
+      // $querystr = "select $wpdb->users.*
+      // FROM $wpdb->users
+      // inner join $wpdb->usermeta AS wm1 ON $wpdb->users.ID = wm1.user_id and wm1.meta_key = 'description'
+      // inner join $wpdb->usermeta AS wm2 ON $wpdb->users.ID = wm2.user_id and wm2.meta_key = 'self_description'
+      // where wm1.meta_value not like wm2.meta_value";
+			//
+      // $app_users = $wpdb->get_results($querystr, OBJECT);
       foreach($app_users as $app_user):
     ?>
     <tr>
