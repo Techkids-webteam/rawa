@@ -2,7 +2,7 @@
 	require_once('../../../wp-load.php');
 	$current_user = wp_get_current_user();
 	$user_array = array(
-		'role__not_in' => array('Pending'),
+		'role__not_in' => array('Pending', 'Administrator'),
 		'orderby' => 'rand',
 		'exclude' => explode(",", $_POST['exclude']),
 		'number' => 6

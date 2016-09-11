@@ -5,42 +5,82 @@ if(!in_array( 'manager', (array) $current_user->roles )){
 ?>
 <?php get_header(); ?>
 <section class="container">
-  <h1>Xét duyệt thành tích</h1>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>MSSV</th>
-        <th>Họ và tên</th>
-        <th>Thành tích</th>
-        <th>Duyệt</th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php
-			$args = array(
-				'role__not_in' => array('Pending'),
-				'meta_key' => 'need_approval',
-				'meta_value' => true
-			);
-			$app_users = get_users( $args );
-      // $querystr = "select $wpdb->users.*
-      // FROM $wpdb->users
-      // inner join $wpdb->usermeta AS wm1 ON $wpdb->users.ID = wm1.user_id and wm1.meta_key = 'description'
-      // inner join $wpdb->usermeta AS wm2 ON $wpdb->users.ID = wm2.user_id and wm2.meta_key = 'self_description'
-      // where wm1.meta_value not like wm2.meta_value";
-			//
-      // $app_users = $wpdb->get_results($querystr, OBJECT);
-      foreach($app_users as $app_user):
-    ?>
-    <tr>
-      <td><?php echo $app_user->user_login ?></td>
-      <td><?php echo esc_html( get_user_meta($app_user->ID, 'nickname', true) ); ?></td>
-      <td><?php echo nl2br(esc_html( get_user_meta($app_user->ID, 'self_description', true) )); ?></td>
-      <td><button class="btn btn-success btn_approve_description" data-user-id="<?php echo $app_user->ID ?>"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
-    </tr>
-    <?php endforeach; ?>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Xét duyệt thành tích</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>MSSV</th>
+            <th>Họ và tên</th>
+            <th>Thành tích</th>
+            <th>Duyệt</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          $args = array(
+            'role__not_in' => array('Pending'),
+            'meta_key' => 'need_approval',
+            'meta_value' => true
+          );
+          $app_users = get_users( $args );
+          // $querystr = "select $wpdb->users.*
+          // FROM $wpdb->users
+          // inner join $wpdb->usermeta AS wm1 ON $wpdb->users.ID = wm1.user_id and wm1.meta_key = 'description'
+          // inner join $wpdb->usermeta AS wm2 ON $wpdb->users.ID = wm2.user_id and wm2.meta_key = 'self_description'
+          // where wm1.meta_value not like wm2.meta_value";
+          //
+          // $app_users = $wpdb->get_results($querystr, OBJECT);
+          foreach($app_users as $app_user):
+        ?>
+        <tr>
+          <td><?php echo $app_user->user_login; ?></td>
+          <td><?php echo esc_html( get_user_meta($app_user->ID, 'nickname', true) ); ?></td>
+          <td><?php echo nl2br(esc_html( get_user_meta($app_user->ID, 'description', true) )); ?></td>
+          <td class="approve_button_container"><button class="btn btn-success btn_approve_description" data-user-id="<?php echo $app_user->ID ?>"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h1>Đã duyệt</h1>
+      <table class="table table-striped" id="approved_table">
+        <thead>
+          <tr>
+            <th>MSSV</th>
+            <th>Họ và tên</th>
+            <th>Thành tích</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          $args = array(
+            'role__not_in' => array('Pending'),
+            'meta_key' => 'approved',
+            'meta_value' => true
+          );
+          $app_users = get_users( $args );
+          // $querystr = "select $wpdb->users.*
+          // FROM $wpdb->users
+          // inner join $wpdb->usermeta AS wm1 ON $wpdb->users.ID = wm1.user_id and wm1.meta_key = 'description'
+          // inner join $wpdb->usermeta AS wm2 ON $wpdb->users.ID = wm2.user_id and wm2.meta_key = 'self_description'
+          // where wm1.meta_value not like wm2.meta_value";
+          //
+          // $app_users = $wpdb->get_results($querystr, OBJECT);
+          foreach($app_users as $app_user):
+        ?>
+        <tr>
+          <td><?php echo $app_user->user_login; ?></td>
+          <td><?php echo esc_html( get_user_meta($app_user->ID, 'nickname', true) ); ?></td>
+          <td><?php echo nl2br(esc_html( get_user_meta($app_user->ID, 'description', true) )); ?></td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -54,7 +94,7 @@ $('body').on('click', '.btn_approve_description', function(e){
   })
   .done(function(result){
     if(result == 'success'){
-      $(that).closest('tr').fadeOut(150);
+      $(that).closest('tr').detach().appendTo('#approved_table tbody').find("td.approve_button_container").remove();
     }
     else{
       alert('You do not have permission to do that!');

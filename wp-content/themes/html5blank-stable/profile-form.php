@@ -55,12 +55,13 @@
 								<?php endif; ?>
 					    </div>
 					  </div>
-						<?php if(in_array( 'subscriber', (array) $current_user->roles )) : ?>
+						<?php if(!in_array( 'pending', (array) $current_user->roles ) 
+								&& !in_array( 'administrator', (array) $current_user->roles ))  : ?>
 							<hr>
 							<div class="form-group">
-								<label for="self_description" class="col-md-3 col-sm-4 control-label">Thành tích</label>
+								<label for="description" class="col-md-3 col-sm-4 control-label">Thành tích</label>
 								<div class="col-md-9 col-sm-8">
-									<textarea class="form-control" name="self_description" id="self_description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'self_description', true) ); ?></textarea>
+									<textarea class="form-control" name="description" id="description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'description', true) ); ?></textarea>
 									<?php if(get_user_meta($profileuser->ID, 'need_approval', true) == true) : ?>
 										<p class="bg-warning"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Thành tích của bạn đang trong quá trình chờ xét duyệt.</p>
 									<?php endif; ?>
@@ -75,6 +76,11 @@
 								<input type="submit" class="btn btn-default" value="Lưu" name="submit" id="submit" />
 								<input type="submit" class="btn btn-primary" value="Lưu và gửi BQT" name="submit" id="submit" />
 							</p>
+						</div>
+
+						<hr>
+						<div>
+							<a class="btn btn-danger" href="<?php echo wp_logout_url(); ?> ">Đăng xuất</a>
 						</div>
 					</div>
 				</div>

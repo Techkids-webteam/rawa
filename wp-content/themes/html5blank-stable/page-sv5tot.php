@@ -45,7 +45,7 @@
 	<ul class="row student-list" id="top-list">
 <?php
 $args = array(
-	'role__not_in' => array('Pending'),
+	'role__not_in' => array('Pending', 'Administrator'),
 	'meta_key' => 'like_num',
 	'orderby' => 'meta_value',
 	'order' => 'DESC',
@@ -114,7 +114,7 @@ if ( ! empty( $top_user_query->results ) ) {
 	<?php
 
 		$user_array = array(
-			'role__not_in' => array('Pending'),
+			'role__not_in' => array('Pending', 'Administrator'),
 			'orderby' => 'rand',
 			'number' => 6
 		);

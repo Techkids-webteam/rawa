@@ -432,11 +432,11 @@ function rawa_login_form_register(){
     && !(empty( $_POST['student_year'] ) || trim( $_POST['student_year'] ) == '')
     && !(empty( $_POST['sid'] )          || trim( $_POST['sid'] ) == '')){
 
-    $_POST['user_login'] = $_POST['student_year'] + $_POST['khoa'] + $_POST['sid'];
+    $_POST['user_login'] = $_POST['student_year'].$_POST['khoa'].$_POST['sid'];
   }
 }
 add_action( 'registration_errors', 'rawa_register_errors' );
-function rawa_register_errors($errors, $sanitized_user_login, $user_email){
+function rawa_register_errors($errors){
   if ( empty( $_POST['nickname'] ) || trim( $_POST['nickname'] ) == '' ) {
     $errors->add( 'nickname_error', __( '<strong>Lỗi</strong>: Xin hãy nhập họ tên của bạn', 'mydomain' ) );
   }
@@ -446,7 +446,7 @@ function rawa_register_errors($errors, $sanitized_user_login, $user_email){
   if ( empty( $_POST['khoa'] ) || trim( $_POST['khoa'] ) == '' ) {
     $errors->add( 'username_error', __( '<strong>Lỗi</strong>: Xin hãy chọn khoa của bạn', 'mydomain' ) );
   }
-  if ( empty( $_POST['sid'] ) || trim( $_POST['sid'] ) == '' ) {
+  if ( empty( $_POST['sid'] ) || trim( $_POST['sid'] ) == '' || strlen(trim($_POST['sid'])) != 4) {
     $errors->add( 'username_error', __( '<strong>Lỗi</strong>: Xin hãy nhập 4 số cuối MSV', 'mydomain' ) );
   }
 
@@ -455,28 +455,33 @@ function rawa_register_errors($errors, $sanitized_user_login, $user_email){
 
 add_action( 'user_register', 'rawa_user_register' );
 function rawa_user_register( $user_id ) {
+    if ( ! empty( $_POST['nickname'] ) ) {
+        update_user_meta( $user_id, 'nickname', trim( $_POST['nickname'] ) );
+    }
   update_user_meta( $user_id, 'like', array());
-    // TODO init like stuffs here
-  update_user_meta( $user_id, 'self_description', '');
+  update_user_meta( $user_id, 'like_num', 0);
+  update_user_meta( $user_id, 'approved', false);
   update_user_meta( $user_id, 'need_approval', false);
 }
 
 add_action( 'personal_options_update', 'rawa_update_profile' );
 add_action( 'edit_user_profile_update', 'rawa_update_profile' );
-function rawa_update_profile($user_id, $old_user_data) {
-  if ( current_user_can('edit_user', $user_id) && ( isset( $_POST['self_description'] ) )){
-    update_user_meta($user_id, 'self_description', trim($_POST['self_description']));
+function rawa_update_profile($user_id, $old_user_data = null) {
+  $current_user = wp_get_current_user();
+  if($current_user->ID == $user_id){
+    update_user_meta($user_id, 'approved', false);
+    if($_POST['submit'] == 'Lưu và gửi BQT') {
+      update_user_meta($user_id, 'need_approval', true);
+    }
   }
-  if($_POST['submit'] == 'Lưu và gửi BQT'){
-    update_user_meta($user_id, 'need_approval', true);
-  }
+  
 }
 
 function approve_user_description($user_id){
   $current_user = wp_get_current_user();
   if(in_array( 'manager', (array) $current_user->roles )){
-    update_user_meta($user_id, 'description', get_user_meta($user_id, 'self_description', true));
     update_user_meta($user_id, 'need_approval', false);
+    update_user_meta($user_id, 'approved', true);
   }
 }
 

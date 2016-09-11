@@ -29,4 +29,15 @@ $(document).ready(function() {
 	$('#random-list').imagesLoaded().progress( function() {
 		$('#random-list').masonry('layout');
 	});
+
+	$('body').on('click', '#home_menu_button', function(){
+		if($('#home_menu_button').hasClass('active')){
+			$('#home_menu_button').removeClass('active');
+			$('#home_menu_list').removeClass('active');
+		}
+		else{
+			$('#home_menu_button').addClass('active');
+			$('#home_menu_list').addClass('active');	
+		}
+	})
 })

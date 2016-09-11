@@ -13,20 +13,18 @@
 	      <option value="145D">52</option>
 	      <option value="135D">51</option>
 	      <option value="125D">50</option>
-	      <option value="115">49</option>
-	      <option value="105">48</option>
 	    </select>
 		</div>
 		<div class="form-group">
 			<select class="form-control" required="" name="khoa" id="khoa<?php $template->the_instance(); ?>">
-	      <option value="">Chọn khoa</option>
-	      <option value="340201">Tài chính &ndash; Ngân hàng</option>
-	      <option value="340301">Kế toán</option>
-	      <option value="340101">Quản trị kinh doanh </option>
-	      <option value="340405">Hệ thống thông tin quản lý</option>
-	      <option value="310101">Kinh tế</option>
-	      <option value="220201">Ngôn ngữ Anh</option>
-	    </select>
+		      <option value="">Chọn khoa</option>
+		      <option value="340201">Tài chính &ndash; Ngân hàng</option>
+		      <option value="340301">Kế toán</option>
+		      <option value="340101">Quản trị kinh doanh </option>
+		      <option value="340405">Hệ thống thông tin quản lý</option>
+		      <option value="310101">Kinh tế</option>
+		      <option value="220201">Ngôn ngữ Anh</option>
+		    </select>
 		</div>
 		<div class="form-group">
 			<label for="sid">4 SỐ CUỐI MSV</label>
