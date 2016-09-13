@@ -40,7 +40,7 @@
 
 <div class="container top-list-container">
 	<div class="page-heading">
-		<h2>TOP RATED</h2>
+		<h2>TOP 3 ĐƯỢC YÊU THÍCH NHẤT</h2>
 	</div>
 	<ul class="row student-list" id="top-list">
 <?php
@@ -107,7 +107,7 @@ if ( ! empty( $top_user_query->results ) ) {
 
 <div class="container random-list-container">
 	<div class="page-heading">
-		<h2>RANDOM LIST</h2>
+		<h2>DANH SÁCH NGẪU NHIÊN</h2>
 	</div>
 	<ul class="row student-list" id="random-list">
 
@@ -229,6 +229,10 @@ if ( ! empty( $top_user_query->results ) ) {
 
 				$items = $(res)
 				$('#random-list').append($items).masonry('appended', $items);
+				$('#random-list').imagesLoaded().progress( function() {
+					$('#random-list').masonry('layout');
+				});
+				
 			}).fail(function(err){
 				console.log(err)
 				$('.random-list-container').append("<div class='alert alert-danger' role='alert'>" + err +"</div>");

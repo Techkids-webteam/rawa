@@ -79,6 +79,10 @@ texarea.form-control{
 	width: auto;
 }
 
+.navbar-default{
+	background: #ffffff;
+}
+
 .home-page.navbar-default{
 	background: transparent;
 	border: 0 none;
@@ -149,6 +153,7 @@ texarea.form-control{
 	display: inline-block;
 	float: right;
 	z-index: 202;
+	padding: 0;
 }
 
 .home_menu_button:focus,
@@ -420,6 +425,11 @@ texarea.form-control{
 
 
 /* SV5TOT PAGE */
+
+.top-list-container .page-heading h2,
+.random-list-container .page-heading h2 {
+	margin-bottom: 25px;
+}
 
 .page-heading {
 	text-align: center;
