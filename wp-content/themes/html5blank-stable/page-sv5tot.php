@@ -37,10 +37,12 @@
 		</div>
 	</div>
 </div>
-
+<div class="container-fluid banner sv5tot-banner">
+	<h1><strong>SINH VIÊN</strong> 5 TỐT</h1>
+</div>
 <div class="container top-list-container">
 	<div class="page-heading">
-		<h2>TOP 3 ĐƯỢC YÊU THÍCH NHẤT</h2>
+		<h3>TOP 3 ĐƯỢC YÊU THÍCH NHẤT</h3>
 	</div>
 	<ul class="row student-list" id="top-list">
 <?php

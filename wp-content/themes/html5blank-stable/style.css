@@ -70,6 +70,10 @@ texarea.form-control{
 .header {
 
 }
+
+.navbar{
+	margin-bottom: 0;
+}
 .navbar-brand{
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -425,6 +429,21 @@ texarea.form-control{
 
 
 /* SV5TOT PAGE */
+
+.banner {
+	background-size: cover;
+	text-align: center;
+	color: #ffffff;
+	background: no-repeat top center;
+}
+
+.sv5tot-banner {
+	background-image: url('img/banner_sv5tot.jpg');
+}
+
+.banner h1 {
+	font-size: 40px;
+}
 
 .top-list-container .page-heading h2,
 .random-list-container .page-heading h2 {

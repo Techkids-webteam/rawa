@@ -35,7 +35,7 @@
     </script>
 
 	</head>
-	<body <?php body_class(); if(!is_page('home')) echo 'style="padding-top: 70px;"';?>>
+	<body <?php body_class(); if(!is_page('home')) echo 'style="padding-top: 50px;"';?>>
 		<div class="wrapper">
 			<?php if(is_page('home')) : ?>
 				<header class="home_header">
