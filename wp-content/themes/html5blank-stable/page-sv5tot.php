@@ -25,6 +25,11 @@
 									} else {
 										echo " btn-none";
 									}
+
+								if(in_array($current_user->ID, $top_user->like)) {
+									echo " active";
+								};
+								
 								?>
 							"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
 						</div>
@@ -152,6 +157,7 @@ if ( ! empty( $top_user_query->results ) ) {
 						</div>
 						<div class="col-xs-12">
 							<p><?php echo nl2br(esc_html($user->description)) ?> </p>
+							<p><?php print_r($user->like); ?></p>
 						</div>
 					</div>
 				</div>

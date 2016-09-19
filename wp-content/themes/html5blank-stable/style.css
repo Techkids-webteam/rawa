@@ -208,6 +208,10 @@ texarea.form-control{
 	margin: 0;
 }
 
+.home_header li:hover{
+	background: rgba(0,0,0,1);
+}
+
 .home_header a:hover,
 .home_header a:active{
 	text-decoration: none;
@@ -267,6 +271,9 @@ texarea.form-control{
 	.home_header li{
 		display: inline-block;
 		margin: 0 5px;
+	}
+	.home_header li:hover{
+		background: none;
 	}
 }
 
@@ -425,24 +432,187 @@ texarea.form-control{
 	}
 }
 
-/* HOME PAGE ENDS */
-
-
-/* SV5TOT PAGE */
-
 .banner {
 	background-size: cover;
 	text-align: center;
-	color: #ffffff;
 	background: no-repeat top center;
-}
-
-.sv5tot-banner {
-	background-image: url('img/banner_sv5tot.jpg');
+	height: 200px;
+	position: relative;
 }
 
 .banner h1 {
-	font-size: 40px;
+	font-size: 36px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: 0;
+	color: #ffffff;
+}
+
+@media (min-width: 768px ) {
+	.banner h1 {
+		font-size: 72px;
+	}
+}
+
+/* HOME PAGE ENDS */
+
+/* SU KIEN VA CO HOI */
+
+body {
+	background: #f7f7f7;
+}
+.news-banner {
+	background: #4db6ac;
+}
+
+.timeline {
+	list-style: none;
+	position: relative;
+	margin-top: 30px;
+	overflow: hidden;
+
+}
+
+.timeline>li {
+	margin-bottom: 20px;
+}
+
+.timeline-event-container {
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+
+}
+
+.timeline:before {
+	content: " ";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 10px;
+	left: 50%;
+	background: #c1d0db;
+	transform: translateX(-50%);
+	display: none;
+}
+
+
+.timeline-badge {
+	width: 60px;
+	height: 60px;
+	border: 5px solid #ffffff;
+	border-radius: 100%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100;
+	display: none;
+	background: #c23941;
+}
+
+.timeline-item-inverted .timeline-badge {
+	background: #3970c2;
+}
+
+.timeline-event-container {
+	padding: 20px;
+	background: #ffffff;
+	width: 100%;
+}
+
+.timeline-event .col-xs-4 {
+	text-align: right;
+}
+
+.timeline-event img {
+	width: 100%;
+}
+
+.timeline-event .col-xs-12 {
+	margin-top: 15px;
+}
+
+.badge-red {
+	background: #c23941;
+}
+
+.timeline-event-container p{
+	margin-top: 20px;
+}
+@media (min-width: 768px) {
+
+	.timeline {
+		padding: 0;
+	}
+
+	.timeline:before {
+		display: block;
+	}
+
+	.timeline-event-container{
+		position: relative;
+	}
+
+	.timeline-item .timeline-event-container:before{
+		content: "";
+		width: 0;
+		height: 0;
+		border: 20px solid transparent;
+		border-left: 30px solid #ffffff;
+		position: absolute;
+		top: 5%;
+		left: 100%;
+	}
+
+	.timeline-item-inverted .timeline-event-container:before{
+		content: "";
+		width: 0;
+		height: 0;
+		border: 20px solid transparent;
+		border-right: 30px solid #ffffff;
+		position: absolute;
+		top: 5%;
+		right: 100%;
+
+	}
+
+	.timeline-badge {
+		width: 100px;
+		height: 100px;
+		display: block;
+	}
+
+	.timeline-event-container {
+		width: 42%;
+	}
+
+	.timeline-item-inverted {
+		position: relative;
+		clear: right;
+	}
+
+	.timeline-item-inverted .timeline-event-container {
+		float: right;
+	}
+
+	.timeline-item + .timeline-item-inverted,
+	.timeline-item-inverted + .timeline-item {
+		margin-top: -150px;
+	}
+
+	.timeline-item-inverted + .timeline-item-inverted,
+	.timeline-item + .timeline-item {
+		margin-top: 20px;
+	}
+}
+
+/* END SU KIEN VA CO HOI */
+
+/* SV5TOT PAGE */
+
+.sv5tot-banner {
+	background: #c23941;
+	color: #ffffff;
 }
 
 .top-list-container .page-heading h2,
@@ -476,6 +646,7 @@ texarea.form-control{
 }
 
 .student-item-content {
+	background: #ffffff;
 	border: 1px solid #333333;
 }
 
@@ -553,6 +724,43 @@ texarea.form-control{
 	border-color: #c63b3b;
 	color: #ffffff;
 	background: #c63b3b;
+	box-shadow: none;
+}
+
+.btn-like {
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.btn-default.btn-like:hover {
+	background: none;
+}
+
+.btn-default.btn-like:focus,
+.btn-default.btn-like:active {
+	background: #ffffff;
+	outline: 0 none;
+	box-shadow: none;
+}
+
+.btn.btn-like.active {
+	border-color: #3970c2;
+	color: #ffffff;
+	background: #3970c2;
+	box-shadow: none;
+}
+
+.btn.btn-like.active:hover {
+	border-color: #3970c2;
+	color: #ffffff;
+	background: #3970c2;
+	box-shadow: none;
+}
+
+.btn.btn-like.active:focus {
+	border-color: #3970c2;
+	color: #ffffff;
+	background: #3970c2;
 	box-shadow: none;
 }
 
@@ -769,6 +977,35 @@ texarea.form-control{
 		padding: 10px 15px 0;
 	}
 }
+
+/*POST PAGE START */
+.post-container {
+	padding: 30px;
+	background: #ffffff;
+	position: relative;
+	top: -150px;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+.post-container img {
+	max-width: 100%;
+}
+
+
+@media (min-width: 768px) {
+	.post-container {
+		padding: 60px;
+	}
+}
+
+/*POST PAGE END */
+
+
+.register-form {
+	padding: 30px;
+	background: #ffffff;
+}
+
 /* PROFILE PAGE ENDS */
 /*------------------------------------*\
     IMAGES

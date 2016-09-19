@@ -1,7 +1,8 @@
-<div class="tml-register" id="theme-my-login<?php $template->the_instance(); ?>">
+<div class="tml-register login_flow_container register-form" id="theme-my-login<?php $template->the_instance(); ?>">
 	<?php $template->the_errors(); ?>
 
 	<form name="registerform" id="registerform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'register', 'login_post' ); ?>" method="post">
+	<h1><?php the_title(); ?></h1>
 		<div class="form-group">
 			<label for="nickname<?php $template->the_instance(); ?>">Họ và tên</label>
 			<input type="text" class="form-control" name="nickname" id="nickname<?php $template->the_instance(); ?>" value="<?php $template->the_posted_value( 'nickname' ); ?>">

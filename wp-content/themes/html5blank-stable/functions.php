@@ -529,6 +529,30 @@ function upvote_user($user_id){
   }
 }
 
+function like_post($post_id){
+  $current_user = wp_get_current_user();
+  if( is_user_logged_in()
+    && !in_array( 'pending', (array) $current_user->roles )
+  ){
+    $likes = get_post_meta($post_id, 'post_like', true);
+
+    if(!is_array($likes)) $likes = array();
+
+    if (!in_array($current_user->ID, $likes)) {
+        array_push($likes, $current_user->ID);
+    } else {
+        $key = array_search($current_user->ID, $likes);
+        unset($likes[$key]);
+    }
+    update_post_meta($post_id, 'like_num', count($likes));
+    update_post_meta($post_id, 'post_like', $likes);
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 function wp_user_query_random_enable($query) {
     if($query->query_vars["orderby"] == 'rand') {
         $query->query_orderby = 'ORDER by RAND()';
@@ -548,4 +572,36 @@ add_role( 'manager', __(
   'publish_posts' => false, // Allows the user to publish, otherwise posts stays in draft mode
   )
 );
+
+
+//TEST
+add_action( 'add_meta_boxes', 'event_meta_box_add' );  
+function event_meta_box_add() {  
+    add_meta_box( 'event-meta-box-id', 'Ngày diễn ra sự kiện / Ngày hết hạn nộp hồ sơ', 'event_meta_box_cb', 'post', 'side', 'high' );  
+}  
+function event_meta_box_cb() {
+    wp_nonce_field( basename( __FILE__ ), 'event_meta_box_nonce' );
+    $value = get_post_meta(get_the_ID(), 'event_date', true);
+    $html = '<label>Ngày: </label><input type="date" name="event_date" value="'.$value.'"/>';
+    echo $html;
+}
+add_action( 'save_post', 'event_meta_box_save' );  
+function event_meta_box_save( $post_id ){   
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return; 
+    if ( !isset( $_POST['event_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['event_meta_box_nonce'], basename( __FILE__ ) ) ) return;
+    if( !current_user_can( 'edit_post' ) ) return;  
+    if( isset( $_POST['event_date'] ) )  
+        update_post_meta( $post_id, 'event_date', esc_attr( $_POST['event_date'], $allowed ) );
+
+}
+
+add_action('save_post', 'post_like_create');
+function post_like_create($post_id) {
+    $likes = get_post_meta($post_id, 'post_like', true);
+    if(!$likes) {
+        $likes = array();
+        update_post_meta( $post_id, 'post_like', $likes);
+    }
+}
+
 ?>
