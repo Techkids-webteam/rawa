@@ -20,8 +20,9 @@
 		$category_detail=get_the_category( $post->ID );
 		$cat =  $category_detail[0]->cat_ID;
 ?>
-		<script>used_post.push(<?php echo $post->ID ?>);</script>
+		
 		<li class="<?php if ($cat == 3) { echo "timeline-item";} else {echo "timeline-item-inverted clearfix";} ?>">
+		<script>used_post.push(<?php echo $post->ID ?>);</script>
 			<div class="timeline-badge">
 			</div>
 			<div class="row timeline-event-container">

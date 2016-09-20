@@ -47,5 +47,12 @@
 		</section>
 
 	</main>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('iframe').attr("width", "100%" );
+			height = $('iframe').width() / 1.7777;
+			$('iframe').height(height)
+		})
+	</script>
 
 <?php get_footer(); ?>

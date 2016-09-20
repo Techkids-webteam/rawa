@@ -9,7 +9,7 @@
 	<ul class="timeline" id="timeline">
 	<?php 
 		$args = array(
-			'posts_per_page'   => 2,
+			'posts_per_page'   => 5,
 			'category'         => '3,4',
 			'orderby'          => 'date',
 			'order'            => 'DESC',
@@ -25,8 +25,9 @@
 			$cat =  $category_detail[0]->cat_ID;
 		
 	?>
-		<script>used_post.push(<?php echo $post->ID ?>);</script>
+		
 		<li class="<?php if ($cat == 3) { echo "timeline-item";} else {echo "timeline-item-inverted clearfix";} ?>">
+			<script>used_post.push(<?php echo $post->ID ?>);</script>
 			<div class="timeline-badge">
 			</div>
 			<div class="row timeline-event-container">
