@@ -6,7 +6,7 @@
           <div class="home_page_left_content">
             <p>TUẦN NÀY</p>
             <p>TÀI CHÍNH CÓ GÌ?</p>
-            <a href="#">XEM THÊM</a>
+            <a href="<?php echo get_site_url(); ?>/tuan-nay-tai-chinh-co-gi/"">XEM THÊM</a>
           </div>
         </div>
         <div class="logo_rawa">

@@ -157,7 +157,6 @@ if ( ! empty( $top_user_query->results ) ) {
 						</div>
 						<div class="col-xs-12">
 							<p><?php echo nl2br(esc_html($user->description)) ?> </p>
-							<p><?php print_r($user->like); ?></p>
 						</div>
 					</div>
 				</div>
