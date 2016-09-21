@@ -83,7 +83,6 @@
 </div>
 <script type="text/javascript">
 	$('body').on('click', '.btn-like', function() {
-	console.log("aaaaa")
 	var id = $(this).attr('data-id');
 	var love = $(this).children('.like-count').text();
 	$('button[data-id= '+ id + ' ]').each(function() {
@@ -103,7 +102,6 @@
 	  })
 	  .done(function(result){
 	    if(result == 'success'){
-	    	console.log("aaaa")
 	    }
 	  })
 	  .fail(function(err){
@@ -127,7 +125,7 @@
 				$('#timeline').append($items);				
 			}).fail(function(err){
 				console.log(err)
-				$('#timeline').append("<div class='alert alert-danger' role='alert'>" + err +"</div>");
+				$('#timeline').append("<div class='alert alert-danger' role='alert'>Đã có lỗi xảy ra khi load trang!</div>");
 			}).always(function(){
 				allowScroll = true;
 			})

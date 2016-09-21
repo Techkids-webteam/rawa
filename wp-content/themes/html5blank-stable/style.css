@@ -969,6 +969,7 @@ body {
 }
 .profile_block{
 	padding-bottom: 15px;
+	background: #ffffff;
 }
 @media (min-width: 768px) {
 	.profile_block{
@@ -1000,6 +1001,11 @@ body {
 }
 
 /*POST PAGE END */
+
+.approve-page-wrapper {
+	background: #ffffff;
+	padding: 20px;
+}
 
 
 /* PROFILE PAGE ENDS */

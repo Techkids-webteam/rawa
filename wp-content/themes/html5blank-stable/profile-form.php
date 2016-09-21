@@ -59,9 +59,15 @@
 								&& !in_array( 'administrator', (array) $current_user->roles ))  : ?>
 							<hr>
 							<div class="form-group">
-								<label for="description" class="col-md-3 col-sm-4 control-label">Thành tích</label>
+								<label for="description" class="col-md-3 col-sm-4 control-label">Giới thiệu bản thân</label>
 								<div class="col-md-9 col-sm-8">
 									<textarea class="form-control" name="description" id="description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'description', true) ); ?></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="description" class="col-md-3 col-sm-4 control-label">Thành tích ngoài trường</label>
+								<div class="col-md-9 col-sm-8">
+									<textarea class="form-control" name="achievements" id="description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'achievements', true) ); ?></textarea>
 									<?php if(get_user_meta($profileuser->ID, 'need_approval', true) == true) : ?>
 										<p class="bg-warning"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Thành tích của bạn đang trong quá trình chờ xét duyệt.</p>
 									<?php endif; ?>

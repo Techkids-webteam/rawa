@@ -469,6 +469,7 @@ add_action( 'edit_user_profile_update', 'rawa_update_profile' );
 function rawa_update_profile($user_id, $old_user_data = null) {
   $current_user = wp_get_current_user();
   if($current_user->ID == $user_id){
+    update_user_meta($user_id, 'achievements', $_POST['achievements']);
     update_user_meta($user_id, 'approved', false);
     if($_POST['submit'] == 'Lưu và gửi BQT') {
       update_user_meta($user_id, 'need_approval', true);
@@ -551,6 +552,19 @@ function like_post($post_id){
   else{
     return false;
   }
+}
+
+function add_event($page_id, $event) {
+    $current_user = wp_get_current_user();
+    if( is_user_logged_in() && in_array( 'manager', (array) $current_user->roles )){
+        $events = get_post_meta($page_id, 'events', true);
+        if(!$events) $events = array();
+        array_push($events, $event);
+        update_post_meta($page_id, 'events', $events);
+        return true;
+    } else {
+        return fales;
+    }
 }
 
 function wp_user_query_random_enable($query) {

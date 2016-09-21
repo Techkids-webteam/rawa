@@ -26,9 +26,9 @@
 										echo " btn-none";
 									}
 
-								if(in_array($current_user->ID, $top_user->like)) {
-									echo " active";
-								};
+									if(in_array($current_user->ID, $top_user->like)) {
+										echo " active";
+									};
 								
 								?>
 							"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
@@ -54,7 +54,7 @@
 $args = array(
 	'role__not_in' => array('Pending', 'Administrator'),
 	'meta_key' => 'like_num',
-	'orderby' => 'meta_value',
+	'orderby' => 'ABS(meta_value)',
 	'order' => 'DESC',
 	'number' => 3
 );
@@ -242,7 +242,7 @@ if ( ! empty( $top_user_query->results ) ) {
 				
 			}).fail(function(err){
 				console.log(err)
-				$('.random-list-container').append("<div class='alert alert-danger' role='alert'>" + err +"</div>");
+				$('.random-list-container').append("<div class='alert alert-danger' role='alert'>Đã có lỗi xảy ra khi load trang!</div>");
 			}).always(function(){
 				allowScroll = true;
 			})
