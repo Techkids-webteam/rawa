@@ -470,9 +470,11 @@ function rawa_update_profile($user_id, $old_user_data = null) {
   $current_user = wp_get_current_user();
   if($current_user->ID == $user_id){
     update_user_meta($user_id, 'achievements', $_POST['achievements']);
-    update_user_meta($user_id, 'approved', false);
-    if($_POST['submit'] == 'Lưu và gửi BQT') {
-      update_user_meta($user_id, 'need_approval', true);
+    update_user_meta($user_id, 'awards', $_POST['award']);
+    
+    if($_POST['submit'] == 'Gửi xét duyệt') {
+        update_user_meta($user_id, 'approved', false);
+        update_user_meta($user_id, 'need_approval', true);
     }
   }
   
@@ -483,6 +485,14 @@ function approve_user_description($user_id){
   if(in_array( 'manager', (array) $current_user->roles )){
     update_user_meta($user_id, 'need_approval', false);
     update_user_meta($user_id, 'approved', true);
+  }
+}
+
+function remove_approve_user($user_id){
+  $current_user = wp_get_current_user();
+  if(in_array( 'manager', (array) $current_user->roles )){
+    update_user_meta($user_id, 'need_approval', false);
+    update_user_meta($user_id, 'approved', false);
   }
 }
 
@@ -560,6 +570,19 @@ function add_event($page_id, $event) {
         $events = get_post_meta($page_id, 'events', true);
         if(!$events) $events = array();
         array_push($events, $event);
+        update_post_meta($page_id, 'events', $events);
+        return true;
+    } else {
+        return fales;
+    }
+}
+
+function delete_event($page_id, $event) {
+    $current_user = wp_get_current_user();
+    if( is_user_logged_in() && in_array( 'manager', (array) $current_user->roles )){
+        $events = get_post_meta($page_id, 'events', true);
+        $key = array_search($event, $events);
+        unset($events[$key]);
         update_post_meta($page_id, 'events', $events);
         return true;
     } else {

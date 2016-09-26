@@ -10,7 +10,8 @@ if(!in_array( 'manager', (array) $current_user->roles )){
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Danh sách sự kiện</a></li>
-    <li role="presentation"><a href="#user_list" aria-controls="profile" role="tab" data-toggle="tab">Danh sách sinh viên</a></li>
+    <li role="presentation"><a href="#user_list" aria-controls="profile" role="tab" data-toggle="tab">Danh sách sinh viên chờ xét duyệt</a></li>
+    <li role="presentation"><a href="#user_approved" aria-controls="profile" role="tab" data-toggle="tab">Danh sách sinh viên đã duyệt</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -30,8 +31,6 @@ if(!in_array( 'manager', (array) $current_user->roles )){
                 <div class="col-xs-12">
                   <div class="page-heading">
                     <h1>Danh sách sự kiện - giải thưởng</h1>
-
-
                   </div>
                   <table  class="table table-striped" id="list_event">
                     <thead>
@@ -45,8 +44,9 @@ if(!in_array( 'manager', (array) $current_user->roles )){
                     <?php 
                       $id = get_the_ID();
                       $events = get_post_meta($id, 'events', true);
+                      if($events)
                       foreach ($events as $event) {
-                        echo "<tr><td></td><td>{$event}</td><td><button type='button' class='btn btn-danger'>Xóa</button></td></tr>";
+                        echo "<tr><td></td><td>{$event}</td><td><button type='button' class='btn btn-danger btn-delete-event' data-event ='{$event}'>Xóa</button></td></tr>";
                       }
                     ?>
                     </tbody>
@@ -57,7 +57,7 @@ if(!in_array( 'manager', (array) $current_user->roles )){
     </div>
     <div role="tabpanel" class="tab-pane" id="user_list">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h1>Xét duyệt thành tích</h1>
           <table class="table table-striped">
             <thead>
@@ -66,6 +66,7 @@ if(!in_array( 'manager', (array) $current_user->roles )){
                 <th>Họ và tên</th>
                 <th>Thành tích</th>
                 <th>Duyệt</th>
+                <th>Hủy</th>
               </tr>
             </thead>
             <tbody>
@@ -88,14 +89,29 @@ if(!in_array( 'manager', (array) $current_user->roles )){
             <tr>
               <td><?php echo $app_user->user_login; ?></td>
               <td><?php echo esc_html( get_user_meta($app_user->ID, 'nickname', true) ); ?></td>
-              <td><?php echo nl2br(esc_html( get_user_meta($app_user->ID, 'achievements', true) )); ?></td>
+              <td>
+              <?php 
+                $awards = get_user_meta($app_user->ID, 'awards', true);
+                if($awards) foreach ($awards as $award) {
+                  echo $award;
+                  echo "<br>";
+                }
+
+              ?>
+                
+              </td>
               <td class="approve_button_container"><button class="btn btn-success btn_approve_description" data-user-id="<?php echo $app_user->ID ?>"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></td>
+              <td><button class="btn btn-danger btn_approve_cancel" data-user-id="<?php echo $app_user->ID ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
           </table>
         </div>
-        <div class="col-md-6">
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="user_approved">
+      <div class="row">
+        <div class="col-md-12">
           <h1>Đã duyệt</h1>
           <table class="table table-striped" id="approved_table">
             <thead>
@@ -103,6 +119,7 @@ if(!in_array( 'manager', (array) $current_user->roles )){
                 <th>MSSV</th>
                 <th>Họ và tên</th>
                 <th>Thành tích</th>
+                <th>Hủy</th>
               </tr>
             </thead>
             <tbody>
@@ -125,7 +142,18 @@ if(!in_array( 'manager', (array) $current_user->roles )){
             <tr>
               <td><?php echo $app_user->user_login; ?></td>
               <td><?php echo esc_html( get_user_meta($app_user->ID, 'nickname', true) ); ?></td>
-              <td><?php echo nl2br(esc_html( get_user_meta($app_user->ID, 'achievements', true) )); ?></td>
+              <td>
+                
+              <?php 
+                $awards = get_user_meta($app_user->ID, 'awards', true);
+                if($awards) foreach ($awards as $award) {
+                  echo $award;
+                  echo "<br>";
+                }
+
+              ?>
+              </td>
+              <td><button class="btn btn-danger btn_approve_cancel" data-user-id="<?php echo $app_user->ID ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
@@ -162,6 +190,29 @@ $('body').on('click', '.btn_approve_description', function(e){
   });
 });
 
+$('body').on('click', '.btn_approve_cancel', function(){
+  var that = this;
+  $.ajax({
+    url     : "<?php echo get_template_directory_uri(); ?>/ajax-remove-user-approve.php",
+    type    : "POST",
+    data    : {'user_id' : $(this).attr('data-user-id')}
+  })
+  .done(function(result){
+    if(result == 'success'){
+      $(that).closest('tr').detach()
+    }
+    else{
+      alert('You do not have permission to do that!');
+      $(this).attr("disabled", "false");
+    }
+  })
+  .fail(function(err){
+    alert('An error has occured while processing the request: ' + err);
+    $(this).attr("disabled", "false");
+  });
+ 
+})
+
 
 $('body').on('submit', '#add_form', function (e) {
     e.preventDefault();
@@ -186,6 +237,28 @@ $('body').on('submit', '#add_form', function (e) {
       console.log(err);
     })
     
+})
+
+$('body').on('click', '.btn-delete-event', function(){
+  var that = this;
+    $.ajax({
+      url     : "<?php echo get_template_directory_uri(); ?>/ajax-delete-event.php",
+      type    : "POST",
+      data    : {
+                  'page_id' : <?php the_ID();?>,
+                  'event'   : $(this).attr('data-event')  
+                }
+
+    })
+    .done(function(res){
+      if(res === 'success' ){
+        $(that).closest('tr').detach();
+      }
+    })
+    .fail(function(err) {
+        console.log(err)
+    })
+  
 })
 
 </script>

@@ -25,11 +25,7 @@
 									} else {
 										echo " btn-none";
 									}
-
-									if(in_array($current_user->ID, $top_user->like)) {
-										echo " active";
-									};
-								
+							
 								?>
 							"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <span class="like-count"></span></button>
 						</div>
@@ -54,7 +50,7 @@
 $args = array(
 	'role__not_in' => array('Pending', 'Administrator'),
 	'meta_key' => 'like_num',
-	'orderby' => 'ABS(meta_value)',
+	'orderby' => 'meta_value_num',
 	'order' => 'DESC',
 	'number' => 3
 );

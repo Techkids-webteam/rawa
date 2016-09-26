@@ -65,12 +65,40 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="description" class="col-md-3 col-sm-4 control-label">Thành tích ngoài trường</label>
-								<div class="col-md-9 col-sm-8">
-									<textarea class="form-control" name="achievements" id="description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'achievements', true) ); ?></textarea>
+								<label for="awards" class="col-md-3 col-sm-4 control-label">Thành tích trong trường</label>
+								<div class="col-md-9 col-sm-8" id="awards">
+					<?php 
+                      $events = get_post_meta(76, 'events', true);
+                      if($events)
+                      foreach ($events as $event) {
+                        echo "  <div class='checkbox'>
+								    <label>
+								      <input type='checkbox' name='award[]' value='{$event}'";
+
+						$compare = get_user_meta($profileuser->ID, 'awards', true);
+						if($compare){
+							foreach ($compare as $item) {
+								if (strcmp($item, $event) == 0) echo "checked";
+							}							
+						}
+						if(get_user_meta($profileuser->ID, 'need_approval', true) == true) {
+							echo " disabled";
+						}
+						echo "> {$event}
+								    </label>
+								  </div>";
+                      }
+                    ?>
 									<?php if(get_user_meta($profileuser->ID, 'need_approval', true) == true) : ?>
 										<p class="bg-warning"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Thành tích của bạn đang trong quá trình chờ xét duyệt.</p>
 									<?php endif; ?>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="description" class="col-md-3 col-sm-4 control-label">Thành tích ngoài trường</label>
+								<div class="col-md-9 col-sm-8">
+									<textarea class="form-control" name="achievements" id="description" rows="5" cols="30"><?php echo esc_html( get_user_meta($profileuser->ID, 'achievements', true) ); ?></textarea>
+
 								</div>
 							</div>
 						<?php endif; ?>
@@ -80,7 +108,7 @@
 								<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
 								<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $current_user->ID ); ?>" />
 								<input type="submit" class="btn btn-default" value="Lưu" name="submit" id="submit" />
-								<input type="submit" class="btn btn-primary" value="Lưu và gửi BQT" name="submit" id="submit" />
+								<input type="submit" class="btn btn-primary" value="Gửi xét duyệt" name="submit" id="approve" />
 							</p>
 						</div>
 
@@ -148,3 +176,21 @@
 	</form>
 	<p></p>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		if($('input[name="award[]"]:checked').length <= 0) {
+			$('#approve').addClass('disabled')
+		}
+
+		$('body').on('click', '#awards', function(){
+			var checked_number = $('input[name="award[]"]:checked').length;
+			if(checked_number <= 0){
+				$('#approve').addClass('disabled')
+			}else {
+				$('#approve').removeClass('disabled')
+			}
+		})
+	})
+
+</script>
